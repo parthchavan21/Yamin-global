@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Yamine — Typography
+   Scale is purpose-named (display / heading / body / label …) so components
+   reference intent, not pixel sizes. Minimum size anywhere is 12px.
+   Labels are uppercase with positive tracking. Tabular data uses --font-mono.
+   ========================================================================== */
+
+:root {
+  /* ---- Family (mirrors fonts.css for convenience) --------------------- */
+  --type-family-sans: var(--font-sans);
+  --type-family-mono: var(--font-mono);
+
+  /* ---- Weights -------------------------------------------------------- */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ---- Display -------------------------------------------------------- */
+  --type-display-size:   48px;
+  --type-display-line:   56px;
+  --type-display-weight: var(--weight-semibold);
+  --type-display-track:  -0.02em;
+
+  /* ---- Headings ------------------------------------------------------- */
+  --type-h1-size:   36px;
+  --type-h1-line:   44px;
+  --type-h1-weight: var(--weight-semibold);
+  --type-h1-track:  -0.018em;
+
+  --type-h2-size:   28px;
+  --type-h2-line:   36px;
+  --type-h2-weight: var(--weight-semibold);
+  --type-h2-track:  -0.012em;
+
+  --type-h3-size:   22px;
+  --type-h3-line:   30px;
+  --type-h3-weight: var(--weight-semibold);
+  --type-h3-track:  -0.006em;
+
+  /* ---- Subheading ----------------------------------------------------- */
+  --type-subheading-size:   18px;
+  --type-subheading-line:   26px;
+  --type-subheading-weight: var(--weight-medium);
+  --type-subheading-track:  0;
+
+  /* ---- Body ----------------------------------------------------------- */
+  --type-body-lg-size:   17px;
+  --type-body-lg-line:   26px;
+  --type-body-lg-weight: var(--weight-regular);
+
+  --type-body-size:      15px;   /* base paragraph */
+  --type-body-line:      24px;
+  --type-body-weight:    var(--weight-regular);
+
+  --type-body-sm-size:   13px;
+  --type-body-sm-line:   20px;
+  --type-body-sm-weight: var(--weight-regular);
+
+  /* ---- Label (ALL CAPS) ----------------------------------------------- */
+  --type-label-size:    12px;
+  --type-label-line:    16px;
+  --type-label-weight:  var(--weight-semibold);
+  --type-label-track:   0.06em;
+  --type-label-case:    uppercase;
+
+  /* ---- Caption -------------------------------------------------------- */
+  --type-caption-size:   12px;
+  --type-caption-line:   16px;
+  --type-caption-weight: var(--weight-regular);
+
+  /* ---- Button text ---------------------------------------------------- */
+  --type-button-size:   15px;
+  --type-button-line:   20px;
+  --type-button-weight: var(--weight-medium);
+  --type-button-track:  0.01em;
+
+  /* ---- Input text ----------------------------------------------------- */
+  --type-input-size:   15px;
+  --type-input-line:   22px;
+  --type-input-weight: var(--weight-regular);
+
+  /* ---- Table text ----------------------------------------------------- */
+  --type-table-size:    14px;
+  --type-table-line:    20px;
+  --type-table-weight:  var(--weight-regular);
+  --type-table-num:     var(--font-mono);  /* numeric cells */
+}

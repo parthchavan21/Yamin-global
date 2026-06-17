@@ -1,0 +1,22 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Spacing scale" subtitle="4-based — 0 · 4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48 · 64 · 80" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; display: flex; flex-wrap: wrap; gap: 18px 22px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .bar { background: var(--blue-600); height: 16px; border-radius: 2px; }
+  .lbl { font-family: var(--font-mono); font-size: 11px; color: var(--content-secondary); }
+</style>
+</head>
+<body>
+  <div id="r" style="display:flex; flex-wrap:wrap; gap:18px 22px; align-items:flex-end;"></div>
+  <script>
+    const s=[['1',4],['2',8],['3',12],['4',16],['5',20],['6',24],['8',32],['10',40],['12',48],['16',64],['20',80]];
+    document.getElementById('r').innerHTML = s.map(([n,px])=>
+      `<div class="item"><div class="bar" style="width:${px}px"></div><span class="lbl">${n} · ${px}</span></div>`).join('');
+  </script>
+</body>
+</html>

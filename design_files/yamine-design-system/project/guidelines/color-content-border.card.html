@@ -1,0 +1,30 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Content & Border roles" subtitle="Text hierarchy on light surfaces + the stroke palette that replaces shadows" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; }
+  .stack > * + * { margin-top: 8px; }
+  .line { display: flex; align-items: baseline; gap: 10px; }
+  .tk { font-family: var(--font-mono); font-size: 10px; color: var(--content-tertiary); }
+  .bd { display:flex; align-items:center; gap:10px; }
+  .bd .bar { width: 64px; height: 0; }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="line"><span class="t-subheading" style="color:var(--content-primary)">Primary content</span><span class="tk">content-primary · #171717</span></div>
+    <div class="line"><span class="t-body" style="color:var(--content-secondary)">Secondary content</span><span class="tk">content-secondary · #5B6670</span></div>
+    <div class="line"><span class="t-body" style="color:var(--content-tertiary)">Tertiary / placeholder</span><span class="tk">content-tertiary · #7C8893</span></div>
+    <div class="line"><span class="t-body" style="color:var(--content-brand)">Brand / link</span><span class="tk">content-brand · #0F5CA6</span></div>
+  </div>
+  <div class="stack">
+    <div class="bd"><span class="bar" style="border-top:1px solid var(--border-secondary)"></span><span class="t-body-sm">subtle</span><span class="tk">#EEF1F4</span></div>
+    <div class="bd"><span class="bar" style="border-top:1px solid var(--border-primary)"></span><span class="t-body-sm">default</span><span class="tk">#E0E5EA</span></div>
+    <div class="bd"><span class="bar" style="border-top:1px solid var(--border-strong)"></span><span class="t-body-sm">strong</span><span class="tk">#CAD2DA</span></div>
+    <div class="bd"><span class="bar" style="border-top:2px solid var(--border-focus)"></span><span class="t-body-sm">focus</span><span class="tk">#4187D2</span></div>
+  </div>
+</body>
+</html>

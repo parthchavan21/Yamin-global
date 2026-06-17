@@ -1,0 +1,31 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Brand / Primary" subtitle="Industrial safety-tech blue — primary actions, links, active states" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; }
+  .row { display: flex; gap: 8px; }
+  .sw { flex: 1; }
+  .chip { height: 56px; border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,0.06); }
+  .meta { margin-top: 8px; }
+  .meta .name { display: block; }
+  .meta .hex { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--content-tertiary); margin-top: 2px; }
+  .star { outline: 2px solid var(--content-primary); outline-offset: 2px; }
+</style>
+</head>
+<body>
+  <div class="row" id="r"></div>
+  <script>
+    const scale = [
+      ['50','#ECF3FB'],['100','#D4E6F7'],['200','#A9CCEF'],['300','#76ABE2'],['400','#4187D2'],
+      ['500','#1E6BBB'],['600','#0F5CA6'],['700','#0C4C8A'],['800','#0E3F70'],['900','#0F3559']
+    ];
+    document.getElementById('r').innerHTML = scale.map(([n,h]) =>
+      `<div class="sw"><div class="chip ${n==='600'?'star':''}" style="background:${h}"></div>
+       <div class="meta"><span class="t-label name">${n}</span><span class="hex">${h}</span></div></div>`
+    ).join('');
+  </script>
+</body>
+</html>

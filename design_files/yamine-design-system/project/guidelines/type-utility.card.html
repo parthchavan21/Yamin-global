@@ -1,0 +1,21 @@
+<!-- @dsCard group="Type" viewport="700x190" name="Label, Caption, Button & Mono" subtitle="Utility styles — uppercase labels, button text, and IBM Plex Mono for data" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; }
+  .cell .spec { font-family: var(--font-mono); font-size: 11px; color: var(--content-tertiary); display:block; margin-bottom: 6px; }
+  .btn { display:inline-block; background: var(--surface-brand); color: var(--content-inverted);
+         padding: 10px 16px; border-radius: var(--radius-sm); font-weight: 500; letter-spacing: .01em; }
+  .num { font-family: var(--font-mono); font-feature-settings: "tnum" 1; font-size: 18px; color: var(--content-primary); }
+</style>
+</head>
+<body>
+  <div class="cell"><span class="spec">LABEL · 12 / 16 · 600 · +0.06em · UPPER</span><span class="t-label">Sensor status</span></div>
+  <div class="cell"><span class="spec">CAPTION · 12 / 16 · 400</span><span class="t-caption">Last calibrated 14 days ago</span></div>
+  <div class="cell"><span class="spec">BUTTON · 15 / 20 · 500</span><span class="btn">Request a quote</span></div>
+  <div class="cell"><span class="spec">MONO / TABULAR · readouts & specs</span><span class="num">24.6 °C&nbsp;&nbsp;·&nbsp;&nbsp;1013 hPa</span></div>
+</body>
+</html>

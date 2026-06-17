@@ -1,0 +1,32 @@
+/* ==========================================================================
+   Yamine — Webfonts
+   Primary UI face:   Satoshi (variable, 300–900) — self-hosted
+   Technical / data:  IBM Plex Mono (readouts, specs, tabular numerics)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../assets/fonts/Satoshi-Variable.woff2') format('woff2-variations'),
+       url('../assets/fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('../assets/fonts/Satoshi-Variable.woff') format('woff');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../assets/fonts/Satoshi-VariableItalic.woff2') format('woff2-variations'),
+       url('../assets/fonts/Satoshi-VariableItalic.woff2') format('woff2'),
+       url('../assets/fonts/Satoshi-VariableItalic.woff') format('woff');
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+}

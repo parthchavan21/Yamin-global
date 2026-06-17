@@ -1,0 +1,37 @@
+<!-- @dsCard group="Colors" viewport="700x190" name="Semantic — Surface + Content" subtitle="Success / Warning / Error / Info paired surface and content tokens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cell { border: 1px solid var(--border-primary); border-radius: var(--radius-md); overflow: hidden; }
+  .band { padding: 12px 14px; }
+  .dot { display:inline-block; width:8px; height:8px; border-radius:999px; margin-right:8px; vertical-align: middle; }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--content-tertiary); display:block; margin-top: 4px; }
+  .foot { padding: 8px 14px; border-top: 1px solid var(--border-secondary); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell">
+      <div class="band" style="background:var(--surface-success)"><span class="t-label" style="color:var(--content-success)"><span class="dot" style="background:var(--green-600)"></span>Success</span><span class="hex">surface #E7F4EC</span></div>
+      <div class="foot"><span class="hex" style="color:var(--content-success)">content #14633F</span></div>
+    </div>
+    <div class="cell">
+      <div class="band" style="background:var(--surface-warning)"><span class="t-label" style="color:var(--content-warning)"><span class="dot" style="background:var(--amber-500)"></span>Warning</span><span class="hex">surface #FBF1DF</span></div>
+      <div class="foot"><span class="hex" style="color:var(--content-warning)">content #8A5A06</span></div>
+    </div>
+    <div class="cell">
+      <div class="band" style="background:var(--surface-error)"><span class="t-label" style="color:var(--content-error)"><span class="dot" style="background:var(--red-600)"></span>Error</span><span class="hex">surface #FBEBE9</span></div>
+      <div class="foot"><span class="hex" style="color:var(--content-error)">content #97271E</span></div>
+    </div>
+    <div class="cell">
+      <div class="band" style="background:var(--surface-info)"><span class="t-label" style="color:var(--content-brand)"><span class="dot" style="background:var(--blue-500)"></span>Info</span><span class="hex">surface #ECF3FB</span></div>
+      <div class="foot"><span class="hex" style="color:var(--content-brand)">content #0F5CA6</span></div>
+    </div>
+  </div>
+</body>
+</html>

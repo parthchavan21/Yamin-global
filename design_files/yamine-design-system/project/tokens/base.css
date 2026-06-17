@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Yamine — Base & Typographic Utilities
+   Element defaults + a small set of text utility classes that map 1:1 to the
+   type scale. Components and UI kits may use these directly.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  color: var(--content-primary);
+  background: var(--surface-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Type utilities --------------------------------------------------- */
+.t-display { font-size: var(--type-display-size); line-height: var(--type-display-line); font-weight: var(--type-display-weight); letter-spacing: var(--type-display-track); }
+.t-h1 { font-size: var(--type-h1-size); line-height: var(--type-h1-line); font-weight: var(--type-h1-weight); letter-spacing: var(--type-h1-track); }
+.t-h2 { font-size: var(--type-h2-size); line-height: var(--type-h2-line); font-weight: var(--type-h2-weight); letter-spacing: var(--type-h2-track); }
+.t-h3 { font-size: var(--type-h3-size); line-height: var(--type-h3-line); font-weight: var(--type-h3-weight); letter-spacing: var(--type-h3-track); }
+.t-subheading { font-size: var(--type-subheading-size); line-height: var(--type-subheading-line); font-weight: var(--type-subheading-weight); }
+.t-body-lg { font-size: var(--type-body-lg-size); line-height: var(--type-body-lg-line); }
+.t-body { font-size: var(--type-body-size); line-height: var(--type-body-line); }
+.t-body-sm { font-size: var(--type-body-sm-size); line-height: var(--type-body-sm-line); }
+.t-label {
+  font-size: var(--type-label-size); line-height: var(--type-label-line);
+  font-weight: var(--type-label-weight); letter-spacing: var(--type-label-track);
+  text-transform: var(--type-label-case);
+}
+.t-caption { font-size: var(--type-caption-size); line-height: var(--type-caption-line); color: var(--content-tertiary); }
+.t-mono { font-family: var(--font-mono); font-feature-settings: "tnum" 1; }
+
+.t-secondary { color: var(--content-secondary); }
+.t-tertiary { color: var(--content-tertiary); }
+.t-brand { color: var(--content-brand); }

@@ -1,0 +1,14 @@
+/* ==========================================================================
+   Yamine — Radius
+   Controlled, professional rounding. Industrial but not sharp.
+   ========================================================================== */
+
+:root {
+  --radius-none: 0px;
+  --radius-xs:   4px;    /* checkboxes, small toggles, tags          */
+  --radius-sm:   6px;    /* buttons, inputs, chips                   */
+  --radius-md:   8px;    /* selects, dropdown menus, small cards     */
+  --radius-lg:   12px;   /* cards, panels, modals                    */
+  --radius-xl:   16px;   /* large feature containers, hero panels    */
+  --radius-pill: 999px;  /* pills, status badges, avatars            */
+}

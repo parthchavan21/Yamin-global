@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components" viewport="700x360" name="Cards, Metrics & Alerts" subtitle="Bordered surfaces, KPI tiles and semantic alert panels — no shadows" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js?v=2"></script>
+<style> body{ padding:24px; background:var(--surface-secondary); } .metrics{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px; } .alerts{ display:flex; flex-direction:column; gap:12px; margin-top:16px; } </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Card, MetricCard, AlertPanel, Badge } = window.YamineDesignSystem_15fa45;
+function Demo(){
+  return (
+    <div>
+      <div className="metrics">
+        <MetricCard label="Ambient CO₂" value="412" unit="ppm" delta="1.2%" trend="up" note="vs last hr" />
+        <MetricCard label="Cold store" value="-18.4" unit="°C" delta="0.3°" trend="flat" note="setpoint -18" />
+        <MetricCard label="Active alarms" value="3" delta="2" trend="down" note="24h" />
+      </div>
+      <Card eyebrow="Gas detection" title="YM-GD-400 Fixed Detector" action={<Badge status="certified">ATEX</Badge>}>
+        <p style={{margin:0, color:'var(--content-secondary)', fontSize:14, lineHeight:'22px'}}>Catalytic-bead sensor for combustible gases. Zone 1 rated, 4–20&nbsp;mA + Modbus output, IP66 enclosure.</p>
+      </Card>
+      <div className="alerts">
+        <AlertPanel tone="warning" title="Calibration overdue">3 detectors are past their calibration window.</AlertPanel>
+        <AlertPanel tone="error" title="Sensor fault" onClose={()=>{}}>Channel 4 reporting out-of-range values.</AlertPanel>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>

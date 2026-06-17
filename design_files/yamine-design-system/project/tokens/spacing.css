@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Yamine — Spacing
+   4-based scale. Use these for gaps, margins, and layout rhythm.
+   Component padding uses these values (all multiples of 4, hence of 2).
+   ========================================================================== */
+
+:root {
+  --spacing-0:  0px;
+  --spacing-1:  4px;
+  --spacing-2:  8px;
+  --spacing-3:  12px;
+  --spacing-4:  16px;
+  --spacing-5:  20px;
+  --spacing-6:  24px;
+  --spacing-8:  32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+
+  /* ---- Padding presets (component density) ---------------------------- */
+  --pad-compact:      8px 12px;    /* dense tables, chips, small controls   */
+  --pad-regular:      12px 16px;   /* default buttons, inputs, list rows    */
+  --pad-comfortable:  16px 24px;   /* cards, panels                         */
+  --pad-card:         24px;        /* card interior                         */
+  --pad-section:      80px;        /* vertical rhythm between page sections  */
+
+  /* ---- Form rhythm ---------------------------------------------------- */
+  --form-field-gap:   20px;        /* vertical gap between fields           */
+  --form-label-gap:   6px;         /* label → control                       */
+  --form-help-gap:    6px;         /* control → helper / error text         */
+
+  /* ---- Layout --------------------------------------------------------- */
+  --container-max:    1280px;      /* marketing / content max width         */
+  --container-wide:   1440px;      /* dashboard shell max width             */
+  --gutter:           24px;        /* grid gutter                           */
+  --sidebar-width:    264px;       /* dashboard side nav                    */
+}

@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Yamine — Borders & Stroke
+   Shadows are forbidden. Hierarchy comes from strokes, fills and spacing.
+   ========================================================================== */
+
+:root {
+  /* ---- Stroke widths -------------------------------------------------- */
+  --stroke-hairline: 1px;   /* default component & card edges            */
+  --stroke-strong:   2px;   /* focus ring, active tab underline, emphasis*/
+
+  /* ---- Named border shorthands (width + style + color token) ---------- */
+  --border-subtle:   1px solid var(--border-secondary);  /* faint divider */
+  --border-default:  1px solid var(--border-primary);    /* standard edge */
+  --border-strong-s: 1px solid var(--border-strong);     /* emphasized    */
+  --border-brand-s:  1px solid var(--border-brand);      /* brand outline */
+  --border-error-s:  1px solid var(--border-error);      /* error state   */
+  --border-focus-s:  2px solid var(--border-focus);      /* focus outline */
+
+  /* ---- Divider -------------------------------------------------------- */
+  --divider-line: 1px solid var(--divider);
+}

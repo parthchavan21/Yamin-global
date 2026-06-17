@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x130" name="Status indicators" subtitle="Live device states — never rely on color alone, always pair with a label" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 24px; display: flex; flex-wrap: wrap; gap: 14px 22px; }
+  .s { display: inline-flex; align-items: center; gap: 8px; }
+  .dot { width: 9px; height: 9px; border-radius: 999px; }
+  .ring { box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 20%, transparent); }
+  span.t { font-size: 13px; color: var(--content-secondary); }
+</style>
+</head>
+<body>
+  <div class="s"><span class="dot" style="background:var(--status-online);color:var(--status-online)"></span><span class="t">Online</span></div>
+  <div class="s"><span class="dot" style="background:var(--status-offline)"></span><span class="t">Offline</span></div>
+  <div class="s"><span class="dot" style="background:var(--status-warning)"></span><span class="t">Warning</span></div>
+  <div class="s"><span class="dot" style="background:var(--status-error)"></span><span class="t">Error / Alarm</span></div>
+  <div class="s"><span class="dot" style="background:var(--status-pending)"></span><span class="t">Pending</span></div>
+  <div class="s"><span class="dot" style="background:var(--status-certified)"></span><span class="t">Certified</span></div>
+</body>
+</html>

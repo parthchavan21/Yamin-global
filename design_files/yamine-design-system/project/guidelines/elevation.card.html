@@ -1,0 +1,28 @@
+<!-- @dsCard group="Spacing" viewport="700x220" name="Elevation without shadows" subtitle="Hierarchy from nested surfaces + strokes, never drop shadows" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 24px; background: var(--surface-secondary); }
+  .l0 { background: var(--surface-secondary); padding: 16px; border-radius: var(--radius-lg); }
+  .l1 { background: var(--surface-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: 16px; }
+  .l2 { background: var(--surface-tertiary); border: 1px solid var(--border-secondary); border-radius: var(--radius-md); padding: 12px 14px; margin-top: 12px; }
+  .accent { border-left: 2px solid var(--border-brand); padding-left: 12px; }
+  .tag { font-family: var(--font-mono); font-size: 10px; color: var(--content-tertiary); }
+</style>
+</head>
+<body>
+  <div class="l0">
+    <span class="tag">surface-secondary — page well</span>
+    <div class="l1" style="margin-top:8px;">
+      <span class="t-label" style="color:var(--content-secondary)">Raised panel</span>
+      <span class="tag" style="float:right">surface-primary + border</span>
+      <div class="l2">
+        <div class="accent"><span class="t-body-sm">Inset block: tertiary fill, brand accent stroke, tighter radius.</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

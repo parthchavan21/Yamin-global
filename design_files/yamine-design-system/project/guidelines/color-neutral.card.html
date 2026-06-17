@@ -1,0 +1,30 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Neutral / Steel" subtitle="Cool-tinted greys — text, surfaces, borders. Darkest is #171717 (no pure black)" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; }
+  .row { display: flex; gap: 6px; }
+  .sw { flex: 1; }
+  .chip { height: 56px; border-radius: var(--radius-sm); border: 1px solid var(--border-primary); }
+  .meta { margin-top: 8px; }
+  .meta .name { display: block; }
+  .meta .hex { display: block; font-family: var(--font-mono); font-size: 10px; color: var(--content-tertiary); margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row" id="r"></div>
+  <script>
+    const scale = [
+      ['0','#FFFFFF'],['50','#F7F8FA'],['100','#EEF1F4'],['200','#E0E5EA'],['300','#CAD2DA'],['400','#A3AEB9'],
+      ['500','#7C8893'],['600','#5B6670'],['700','#404A53'],['800','#2A3138'],['900','#1F242A'],['950','#171717']
+    ];
+    document.getElementById('r').innerHTML = scale.map(([n,h]) =>
+      `<div class="sw"><div class="chip" style="background:${h}"></div>
+       <div class="meta"><span class="t-label name">${n}</span><span class="hex">${h}</span></div></div>`
+    ).join('');
+  </script>
+</body>
+</html>

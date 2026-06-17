@@ -1,0 +1,48 @@
+<!-- @dsCard group="Components" viewport="700x440" name="Form Controls" subtitle="Inputs, select, textarea, checkbox, radio, switch — default / focus / error / disabled" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js?v=2"></script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style> body{ padding:24px; } .grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; } .choices{ display:flex; gap:20px; align-items:center; flex-wrap:wrap; } </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Input, Select, Textarea, Checkbox, Radio, Switch } = window.YamineDesignSystem_15fa45;
+const I = ({ n, s=16 }) => { const r=React.useRef(); React.useEffect(()=>{ if(r.current){ r.current.innerHTML=''; const e=window.lucide.createElement(window.lucide.icons[n]); e.setAttribute('width',s); e.setAttribute('height',s); r.current.appendChild(e);} }); return <span ref={r} style={{display:'inline-flex'}} />; };
+function Demo(){
+  return (
+    <div className="grid">
+      <Input label="Site name" placeholder="e.g. North Refinery" />
+      <Input label="Serial number" mono prefix={<I n="Hash"/>} defaultValue="YM-GD-04821" />
+      <Input label="Search devices" prefix={<I n="Search"/>} placeholder="Search…" />
+      <Input label="Email" error="Enter a valid work email" defaultValue="bad@" />
+      <Select label="Sensor type" defaultValue="gas">
+        <option value="gas">Gas detector</option>
+        <option value="temp">Temperature probe</option>
+        <option value="vib">Vibration sensor</option>
+      </Select>
+      <Input label="Disabled" disabled placeholder="Unavailable" />
+      <div style={{gridColumn:'1 / -1'}}>
+        <Textarea label="Installation notes" placeholder="Notes…" rows={2} />
+      </div>
+      <div className="choices" style={{gridColumn:'1 / -1'}}>
+        <Checkbox label="Email alerts" defaultChecked />
+        <Radio name="c" label="Real-time" defaultChecked />
+        <Radio name="c" label="Every 5 min" />
+        <Switch label="Maintenance mode" />
+        <Switch label="Alarm relay" defaultChecked />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>
