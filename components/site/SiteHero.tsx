@@ -170,8 +170,6 @@ export function SiteHero() {
                 alt="Industrial monitoring systems"
                 style={{ width: "100%", height: "112%", objectFit: "cover", display: "block", willChange: "transform" }}
               />
-            
-              
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ export function SiteFooter() {
               <BrandMark />
             </div>
             <p style={{ fontSize: 15, lineHeight: 1.6, color: "#6B7787", margin: 0, maxWidth: 300 }}>
-              Industrial distribution of monitoring, safety and control systems. P O BOX 40369, Ajman Free
+              Industrial distribution of monitoring, safety and control systems. P O BOX 40369, C1 - 1F - SF0010, Ajman Free
               Zone, Ajman — UAE.
             </p>
           </div>

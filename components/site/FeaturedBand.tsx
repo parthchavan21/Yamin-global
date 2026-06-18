@@ -5,7 +5,7 @@ const mono = { fontFamily: "var(--yg-mono)" } as const;
 export function FeaturedBand() {
   return (
     <section className="yg-sec" style={{ padding: "0 0 104px" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 36px" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 36px " }}>
         <div className="yg-feat" data-reveal="" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", border: "1px solid #E4E8EE" }}>
           <div className="yg-feat-pad" style={{ padding: "54px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <div style={{ ...mono, fontSize: 12, letterSpacing: ".12em", textTransform: "uppercase", color: "#0E5FCB", marginBottom: 20 }}>
@@ -36,7 +36,7 @@ export function FeaturedBand() {
           </div>
           <div style={{ position: "relative", minHeight: 380, borderLeft: "1px solid #E4E8EE", background: "#F4F6F9" }}>
             <Image
-              src="/onsite-img.png"
+              src="/Pumpjack-B.png"
               alt="Field engineer commissioning monitoring equipment on site"
               fill
               sizes="(max-width: 980px) 100vw, 640px"
