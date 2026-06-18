@@ -1,67 +1,108 @@
 import { SITE } from "@/lib/site";
-import { EnquirySection } from "@/components/site/EnquirySection";
+import { BrandMark } from "@/components/site/BrandMark";
+
+const mono = { fontFamily: "var(--yg-mono)" } as const;
 
 const COLS = [
-  { h: "Products", links: ["Gas detection", "Process control", "Data acquisition", "Cold chain", "Clean room", "Vibration"] },
-  { h: "Company", links: ["About Yamin Global", "Industries", "Certifications", "Careers"] },
-  { h: "Support", links: ["Documentation", "Calibration service", "Contact an engineer"] },
+  {
+    title: "Products",
+    links: [
+      { label: "Gas detection", href: "#products" },
+      { label: "Flame detection", href: "#products" },
+      { label: "Process control", href: "#products" },
+      { label: "Cold chain", href: "#products" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "#why" },
+      { label: "Industries", href: "#industries" },
+      { label: "Certifications", href: "#" },
+      { label: "Careers", href: "#" },
+    ],
+  },
 ];
+
+const headingStyle = {
+  ...mono,
+  fontSize: 11,
+  letterSpacing: ".1em",
+  textTransform: "uppercase",
+  color: "#9AA4B2",
+  margin: "0 0 16px",
+  fontWeight: 400,
+} as const;
+
+const colStyle = { display: "flex", flexDirection: "column", gap: 11, fontSize: 15, color: "#46505C" } as const;
 
 export function SiteFooter() {
   return (
-    <footer>
-      <EnquirySection />
-      <div style={{ background: "var(--surface-inverted)", borderTop: "1px solid var(--neutral-800)" }}>
-      <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 pt-16 pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)_1.2fr] gap-10 lg:gap-12">
-        <div className="sm:col-span-2 lg:col-span-1">
-          <span
-            className="block text-xl font-bold mb-4"
-            style={{ color: "var(--blue-300)", fontFamily: "var(--font-sans)", letterSpacing: "-0.02em" }}
-          >
-            Yamin Global
-          </span>
-          <p style={{ margin: 0, fontSize: 13, lineHeight: "20px", color: "var(--neutral-500)", maxWidth: 260 }}>
-            Industrial distribution of monitoring, safety and control systems.
-          </p>
-        </div>
-        {COLS.map((c) => (
-          <nav key={c.h} aria-label={c.h}>
-            <span className="t-label block mb-4" style={{ color: "var(--neutral-500)" }}>{c.h}</span>
-            <div className="flex flex-col gap-2.5">
-              {c.links.map((l) => (
-                <a key={l} href="#" className="no-underline" style={{ color: "var(--neutral-300)", fontSize: 14 }}>
-                  {l}
-                </a>
-              ))}
+    <footer style={{ background: "#fff", color: "#0E1A2B", padding: "72px 0 32px", borderTop: "1px solid #ECEEF2" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 var(--yg-gutter)" }}>
+        <div
+          className="yg-footer-grid"
+          style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr", gap: 40, paddingBottom: 48, borderBottom: "1px solid #ECEEF2" }}
+        >
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 11, marginBottom: 16 }}>
+              <BrandMark />
             </div>
-          </nav>
-        ))}
-        <div>
-          <span className="t-label block mb-4" style={{ color: "var(--neutral-500)" }}>Contact</span>
-          <address className="not-italic flex flex-col gap-2.5" style={{ fontSize: 14, color: "var(--neutral-300)" }}>
-            <span style={{ color: "var(--neutral-500)", lineHeight: "20px" }}>
-              {SITE.address.line1}, {SITE.address.line2}, {SITE.address.country}
-            </span>
-            <a href={`mailto:${SITE.email}`} className="no-underline" style={{ color: "var(--neutral-300)" }}>
-              {SITE.email}
-            </a>
-            <a href={SITE.phoneHref} className="no-underline" style={{ color: "var(--neutral-300)" }}>
-              {SITE.phone}
-            </a>
-          </address>
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: "#6B7787", margin: 0, maxWidth: 300 }}>
+              Industrial distribution of monitoring, safety and control systems. P O BOX 40369, Ajman Free
+              Zone, Ajman — UAE.
+            </p>
+          </div>
+
+          {COLS.map((col) => (
+            <div key={col.title}>
+              <h4 style={headingStyle}>{col.title}</h4>
+              <div style={colStyle}>
+                {col.links.map((l) => (
+                  <a key={l.label} className="yg-navlink" href={l.href}>
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div>
+            <h4 style={headingStyle}>Get in touch</h4>
+            <div style={colStyle}>
+              <a className="yg-navlink" href={`mailto:${SITE.email}`}>
+                {SITE.email}
+              </a>
+              <a className="yg-navlink" href={SITE.phoneHref}>
+                {SITE.phone}
+              </a>
+              <a href="#enquiry" style={{ color: "#0E5FCB", fontWeight: 500 }}>
+                Request a quote →
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-5 flex flex-col sm:flex-row sm:justify-between gap-3"
-        style={{ borderTop: "1px solid var(--neutral-800)", fontSize: 12, color: "var(--neutral-500)" }}
-      >
-        <span>© 2026 {SITE.legalName} All rights reserved.</span>
-        <span className="flex gap-6">
-          <span>Privacy policy</span>
-          <span>Terms</span>
-          <span>Quality policy</span>
-        </span>
-      </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 14,
+            paddingTop: 24,
+            ...mono,
+            fontSize: 12,
+            color: "#9AA4B2",
+          }}
+        >
+          <span>© 2026 {SITE.legalName} — All rights reserved.</span>
+          <div style={{ display: "flex", gap: 24 }}>
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Quality policy</a>
+          </div>
+        </div>
       </div>
     </footer>
   );

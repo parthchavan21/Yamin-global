@@ -1,102 +1,181 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+"use client";
 
-const LOGOS = [
-  { src: "/logos/EX.jpg",            alt: "ATEX / Ex" },
-  { src: "/logos/IECEx.jpg",         alt: "IECEx" },
-  { src: "/logos/SIL2-Logo.jpg",     alt: "SIL 2" },
-  { src: "/logos/CE.jpg",            alt: "CE" },
-  { src: "/logos/HART.png",          alt: "HART" },
-  { src: "/logos/UKCA.jpg",          alt: "UKCA" },
-  { src: "/logos/UL.jpg",            alt: "UL" },
-  { src: "/logos/RoHS-logo.jpg",     alt: "RoHS" },
-  { src: "/logos/BIS.png",           alt: "BIS" },
-  { src: "/logos/PESO.jpg",          alt: "PESO" },
-  { src: "/logos/MSME.jpg",          alt: "MSME" },
-  { src: "/logos/NSIC.jpg",          alt: "NSIC" },
-  { src: "/logos/GeM.jpg",           alt: "GeM" },
-  { src: "/logos/DSIR.png",          alt: "DSIR" },
-  { src: "/logos/DRDO.png",          alt: "DRDO" },
-  { src: "/logos/Make-in-India.jpg", alt: "Make in India" },
-  { src: "/logos/SGS-BASEEFA.png",   alt: "SGS Baseefa" },
-  { src: "/logos/SASO2.png",         alt: "SASO" },
-  { src: "/logos/SASOEX-1.png",      alt: "SASO-Ex" },
-  { src: "/logos/QCI.png",           alt: "QCI" },
-  { src: "/logos/ISI.jpg",           alt: "ISI" },
-  { src: "/logos/IP.png",            alt: "IP" },
-  { src: "/logos/DME.png",           alt: "DME" },
-  { src: "/logos/CIFMR.jpg",         alt: "CIFMR" },
-  { src: "/logos/TS-logo.jpg",       alt: "TS" },
-  { src: "/logos/Malesiya-logo.jpg", alt: "Malaysia" },
-];
-const TICKER_ITEMS = [...LOGOS, ...LOGOS];
+import { useEffect, useRef } from "react";
 
+const mono = {
+  fontFamily: "var(--yg-mono)",
+} as const;
 
 export function SiteHero() {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const ppmRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const img = imgRef.current;
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      if (img) img.style.transform = `translateY(${-Math.min(y * 0.1, 60)}px)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Live "telemetry" readout — wanders within the normal band.
+    const ppmTimer = setInterval(() => {
+      if (ppmRef.current) ppmRef.current.textContent = (8 + Math.random() * 9).toFixed(0);
+    }, 1400);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      clearInterval(ppmTimer);
+    };
+  }, []);
+
   return (
-    <section
-      id="top"
-      aria-labelledby="hero-heading"
-      style={{ background: "var(--surface-primary)", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }}
-    >
-      <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center" style={{ paddingTop: "calc(24px + 56px + 40px)", paddingBottom: 64 }}>
-        <div style={{ minWidth: 0 }}>
-          <span className="t-label block mb-4" style={{ color: "var(--content-brand)" }}>
-            Industrial monitoring &amp; safety
-          </span>
-          <h1
-            id="hero-heading"
-            className="t-display"
-            style={{
-              margin: "0 0 20px",
-              textWrap: "balance",
-              fontSize: "clamp(28px, 5vw, 40px)",
-              lineHeight: "clamp(36px, 6vw, 50px)",
-            }}
-          >
-            Your industry runs on precision. We help you protect it before risk becomes a problem.
-          </h1>
-          <p className="t-body-lg t-secondary" style={{ margin: "0 0 32px", maxWidth: 520 }}>
-            Yamin Global provides advanced gas detection, process monitoring, cold chain, clean room, IoT, and data acquisition solutions that help you monitor critical conditions, respond faster, and keep your people, assets, and operations safe.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 mb-8">
-            <a href="#products" className="w-full sm:w-auto no-underline"><Button size="lg" className="w-full">Browse products</Button></a>
-            <Button size="lg" variant="secondary" className="w-full sm:w-auto">Talk to an engineer</Button>
-          </div>
-          <div className="flex flex-col gap-3" style={{ width: "100%", maxWidth: 540, overflow: "hidden" }}>
-            <span className="t-label" style={{ color: "var(--content-tertiary)" }}>
-              Certified &amp; compliant to
+    <header id="top" className="yg-hero" style={{ position: "relative", padding: "142px 0 60px", overflow: "hidden" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 var(--yg-gutter)", position: "relative" }}>
+        {/* blueprint grid frame */}
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
+          <span style={{ position: "absolute", top: -20, bottom: -20, left: 0, width: 1, background: "#ECEEF2" }} />
+          <span style={{ position: "absolute", top: -20, bottom: -20, right: 0, width: 1, background: "#ECEEF2" }} />
+          {[
+            { pos: { top: -20, left: 0 }, t: "translate(-50%,-50%)" },
+            { pos: { top: -20, right: 0 }, t: "translate(50%,-50%)" },
+            { pos: { bottom: -20, left: 0 }, t: "translate(-50%,50%)" },
+            { pos: { bottom: -20, right: 0 }, t: "translate(50%,50%)" },
+          ].map((c, i) => (
+            <span
+              key={i}
+              style={{ position: "absolute", ...c.pos, color: "#0E5FCB", ...mono, fontSize: 13, transform: c.t }}
+            >
+              +
             </span>
-            <div style={{ width: "100%", overflow: "hidden", maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)" }}>
-              <ul className="ym-ticker-track gap-6 list-none m-0 p-0 items-center" aria-hidden="true">
-                {TICKER_ITEMS.map((logo, i) => (
-                  <li key={`${logo.alt}-${i}`} className="flex-none flex items-center">
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={72}
-                      height={40}
-                      className="object-contain"
-                      style={{ height: 40, width: "auto", maxWidth: 72 }}
-                    />
-                  </li>
-                ))}
-              </ul>
+          ))}
+        </div>
+
+        <div
+          className="yg-eyebrow-row"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            gap: 16,
+            ...mono,
+            fontSize: 12,
+            letterSpacing: ".08em",
+            textTransform: "uppercase",
+            color: "#8A93A0",
+            position: "relative",
+            zIndex: 1,
+            paddingBottom: 34,
+          }}
+        >
+          <span>Ajman Free Zone — UAE</span>
+        </div>
+
+        <div
+          className="yg-hero-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.08fr .92fr",
+            gap: 54,
+            alignItems: "center",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <div data-reveal-l="">
+            <div
+              className="yg-mono"
+              style={{
+                fontSize: 12,
+                letterSpacing: ".12em",
+                textTransform: "uppercase",
+                color: "#0E5FCB",
+                marginBottom: 20,
+              }}
+            >
+              Industrial monitoring &amp; safety
+            </div>
+            <h1
+              className="yg-h1"
+              style={{
+                fontSize: 48,
+                lineHeight: 1.0,
+                letterSpacing: "-0.035em",
+                fontWeight: 600,
+                margin: "0 0 26px",
+                width: 500,
+                maxWidth: "100%",
+              }}
+            >
+              Your plant runs on precision. We protect it{" "}
+              <span style={{ color: "#0E5FCB" }}>before risk becomes a problem.</span>
+            </h1>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: "#46505C", maxWidth: 520, margin: "0 0 34px" }}>
+              Certified gas, flame, process and environmental monitoring — specified, commissioned and
+              supported by engineers, so your people and assets stay safe.
+            </p>
+            <div className="yg-hero-cta-row" style={{ display: "flex", flexWrap: "wrap", gap: 0 }}>
+              <a
+                className="yg-cta-line yg-mono"
+                href="#products"
+                style={{
+                  background: "#0E1A2B",
+                  color: "#fff",
+                  fontSize: 13,
+                  letterSpacing: ".05em",
+                  textTransform: "uppercase",
+                  padding: "17px 28px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 10,
+                }}
+              >
+                <span>Browse products &nbsp;→</span>
+              </a>
+              <a
+                className="yg-ghost yg-mono"
+                href="#enquiry"
+                style={{
+                  border: "1px solid #D7DDE5",
+                  borderLeft: "none",
+                  color: "#0E1A2B",
+                  fontSize: 13,
+                  letterSpacing: ".05em",
+                  textTransform: "uppercase",
+                  padding: "17px 28px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  transition: "background .25s ease, color .25s ease",
+                }}
+              >
+                Talk to an engineer
+              </a>
+            </div>
+          </div>
+
+          <div data-reveal="" style={{ position: "relative" }}>
+            <div
+              style={{
+                position: "relative",
+                background: "linear-gradient(150deg,#0E5FCB,#0A2540)",
+                overflow: "hidden",
+                aspectRatio: "4 / 4.1",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                ref={imgRef}
+                src="/Herosection.png"
+                alt="Industrial monitoring systems"
+                style={{ width: "100%", height: "112%", objectFit: "cover", display: "block", willChange: "transform" }}
+              />
+            
+              
             </div>
           </div>
         </div>
-        <div className="w-full flex items-center justify-center lg:justify-end">
-          <Image
-            src="/heroimg1.png"
-            alt="Industrial monitoring systems"
-            width={560}
-            height={480}
-            priority
-            sizes="(max-width: 1024px) 100vw, 560px"
-            className="w-full h-auto lg:max-h-[480px] object-contain"
-          />
-        </div>
       </div>
-    </section>
+    </header>
   );
 }
