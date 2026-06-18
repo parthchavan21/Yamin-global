@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Space_Grotesk, Space_Mono } from "next/font/google";
 import { SITE, SITE_URL } from "@/lib/site";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
@@ -20,6 +20,22 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Marketing homepage display face (Yamin Global v2 design).
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+// Marketing homepage technical / label face.
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -72,7 +88,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${satoshi.variable} ${ibmPlexMono.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${satoshi.variable} ${ibmPlexMono.variable} ${spaceGrotesk.variable} ${spaceMono.variable} h-full`}
+    >
       <body className="min-h-full">
         <SmoothScroll>{children}</SmoothScroll>
       </body>

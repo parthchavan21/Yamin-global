@@ -375,3 +375,117 @@ body {
 .ym-select { appearance: none; -webkit-appearance: none; width: 100%; height: 100%; border: none; outline: none; background: transparent; padding: 0 36px 0 12px; font-family: var(--font-sans); font-size: var(--type-input-size); color: var(--content-primary); cursor: pointer; }
 .ym-select:disabled { color: var(--content-disabled); cursor: not-allowed; }
 .ym-selectwrap__chev { position: absolute; right: 12px; pointer-events: none; color: var(--content-tertiary); display: inline-flex; }
+
+/* ==========================================================================
+   Yamin Global v2 — marketing homepage (Claude Design "Yamin Global v2").
+   Self-contained system: Space Grotesk / Space Mono, blueprint aesthetic,
+   marquees, scroll-driven reveals. Scoped under .yg-page so it never touches
+   the shared Satoshi-based design system above.
+   ========================================================================== */
+.yg-page {
+  --yg-font: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --yg-mono: var(--font-space-mono), "Space Mono", ui-monospace, monospace;
+  --yg-blue: #0E5FCB;
+  --yg-ink: #0E1A2B;
+  --yg-gutter: 36px;
+  /* Width of the industries hover-cursor image. Scales with the viewport;
+     tweak the clamp min/preferred/max to resize it per screen. */
+  --yg-cursor-w: clamp(150px, 16vw, 260px);
+  font-family: var(--yg-font);
+  color: var(--yg-ink);
+  background: #fff;
+  overflow-x: hidden;
+}
+.yg-page *,
+.yg-page *::before,
+.yg-page *::after { box-sizing: border-box; }
+.yg-page ::selection { background: #0E5FCB; color: #fff; }
+.yg-mono { font-family: var(--yg-mono); }
+
+@keyframes ygReveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+@keyframes ygRevealL { from { opacity: 0; transform: translateX(-36px); } to { opacity: 1; transform: none; } }
+@keyframes ygPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: .3; } }
+@keyframes ygMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ygMarqueeR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.yg-page [data-reveal] { animation: ygReveal linear both; animation-timeline: view(); animation-range: entry 2% cover 24%; }
+.yg-page [data-reveal-l] { animation: ygRevealL linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+
+.yg-marq:hover .yg-mt { animation-play-state: paused; }
+.yg-navlink { position: relative; }
+.yg-navlink::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 1.5px; width: 0; background: #0E5FCB; transition: width .3s ease; }
+.yg-navlink:hover::after { width: 100%; }
+.yg-cta:hover { background: #0A4AAE !important; }
+.yg-cta-line { position: relative; overflow: hidden; }
+.yg-cta-line span { position: relative; z-index: 1; transition: color .3s ease; }
+.yg-cta-line::before { content: ''; position: absolute; inset: 0; background: #0E5FCB; transform: translateY(101%); transition: transform .35s cubic-bezier(.5,.1,.1,1); }
+.yg-cta-line:hover::before { transform: translateY(0); }
+.yg-cta-line:hover span { color: #fff; }
+/* inline color on the anchor wins over a plain class rule, so force it */
+.yg-ghost:hover { background: #0E1A2B; color: #fff !important; }
+.yg-prod { transition: background .3s ease, border-color .3s ease; }
+.yg-prod:hover { background: #F6F9FD; }
+.yg-prod:hover .yg-prod-top { background: #0E5FCB; }
+.yg-prod:hover .yg-arrow { transform: translateX(6px) translateY(-6px); color: #0E5FCB; }
+.yg-prod:hover .yg-prod-ic { background: #0A4AAE; }
+.yg-row { transition: background .3s ease; }
+.yg-row:hover { background: #0E1A2B; }
+.yg-row:hover .yg-row-name, .yg-row:hover .yg-row-no { color: #fff; }
+.yg-row:hover .yg-row-ar { opacity: 1; transform: translateX(0); color: #6FA0EE; }
+.yg-faq:hover .yg-faq-q { color: #0E5FCB; }
+.yg-input:focus { outline: none; border-color: #0E5FCB !important; background: #fff !important; }
+
+/* Mobile / tablet navigation — burger + dropdown panel (hidden on desktop). */
+.yg-burger { display: none; }
+.yg-mobile-panel { display: none; }
+.yg-mobile-link { transition: color .2s ease; }
+.yg-mobile-link:hover { color: #0E5FCB; }
+
+@media (prefers-reduced-motion: reduce) {
+  .yg-page [data-reveal], .yg-page [data-reveal-l] { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+@media (max-width: 980px) {
+  .yg-hero-grid { grid-template-columns: 1fr !important; }
+  .yg-h1 { font-size: 46px !important; width: auto !important; }
+  .yg-two { grid-template-columns: 1fr !important; width: auto !important; }
+  .yg-prods { grid-template-columns: 1fr !important; }
+  .yg-feat { grid-template-columns: 1fr !important; }
+  .yg-nav-links { display: none !important; }
+  .yg-nav-cta { display: none !important; }
+  .yg-burger { display: inline-flex !important; }
+  .yg-mobile-panel.is-open { display: block; }
+  .yg-sec { padding: 64px 0 !important; }
+  .yg-row-name { font-size: 26px !important; }
+  .yg-form-grid { grid-template-columns: 1fr !important; }
+  .yg-contact-grid { grid-template-columns: 1fr !important; }
+  .yg-footer-grid { grid-template-columns: 1fr 1fr !important; }
+  /* tighten hero top padding below the fixed nav */
+  .yg-hero { padding-top: 104px !important; padding-bottom: 44px !important; }
+  /* single-column "Why" — drop the sticky so the intro can't overlap the list */
+  .yg-why-intro { position: static !important; top: auto !important; }
+  /* stacked featured / enquiry blocks — 20px side padding */
+  .yg-feat-pad { padding: 36px 20px !important; }
+  .yg-form-pad { padding: 28px 20px !important; }
+}
+
+/* True mobile: 20px side gutters + tightened type. The font sizes use
+   !important because the source values are set as inline styles. */
+@media (max-width: 640px) {
+  .yg-page { --yg-gutter: 20px; }
+  .yg-hero { padding-top: 90px !important; }
+  .yg-h1 { font-size: 32px !important; line-height: 1.08 !important; }
+  .yg-page h2 { font-size: 28px !important; line-height: 1.08 !important; letter-spacing: -0.02em !important; }
+  .yg-feat h3 { font-size: 24px !important; }
+  .yg-row-name { font-size: 22px !important; }
+  .yg-eyebrow-row { flex-wrap: wrap !important; gap: 6px !important; }
+  /* engineered/calibrated text block — 20px side padding */
+  .yg-feat-pad { padding: 28px 20px !important; }
+  .yg-form-pad { padding: 24px 20px !important; }
+  /* body copy to 16px */
+  .yg-page p { font-size: 16px !important; }
+  /* every CTA fills its container, stacked */
+  .yg-hero-cta-row { flex-direction: column !important; gap: 10px !important; }
+  .yg-cta-line, .yg-ghost { width: 100% !important; justify-content: center !important; text-align: center !important; }
+  .yg-cta-line { align-self: stretch !important; }
+  .yg-ghost { border-left: 1px solid #D7DDE5 !important; }
+}

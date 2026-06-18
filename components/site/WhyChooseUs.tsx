@@ -1,78 +1,39 @@
-import type { ComponentType } from "react";
-import { Cable, LifeBuoy, ShieldCheck, Wrench, type LucideProps } from "lucide-react";
+import { HOME_VALUES } from "@/lib/home";
 
-const POINTS: { Icon: ComponentType<LucideProps>; title: string; body: string }[] = [
-  {
-    Icon: ShieldCheck,
-    title: "Certified and compliant",
-    body: "Every instrument ships with named certificates — ATEX, IECEx, SIL 2 — and calibration records for your audit trail.",
-  },
-  {
-    Icon: Wrench,
-    title: "Engineered, not just shipped",
-    body: "Our engineers specify, commission and calibrate on site, with full documentation for your compliance records.",
-  },
-  {
-    Icon: Cable,
-    title: "Integration-ready",
-    body: "Standard outputs — 4–20 mA, Modbus RTU/TCP and OPC UA — drop into your existing SCADA without rework.",
-  },
-  {
-    Icon: LifeBuoy,
-    title: "Supported after delivery",
-    body: "Service contracts cover preventive maintenance, spares and 24/7 alarm escalation across every product family.",
-  },
-];
+const mono = { fontFamily: "var(--yg-mono)" } as const;
 
 export function WhyChooseUs() {
   return (
-    <section
-      id="why"
-      aria-labelledby="why-heading"
-      style={{ background: "var(--surface-brand)" }}
-    >
-      <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
-        <div style={{ maxWidth: 620, marginBottom: 48 }}>
-          <span className="t-label block mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
-            Why Yamin Global
-          </span>
-          <h2 id="why-heading" className="t-h1" style={{ margin: "0 0 12px", color: "#fff" }}>
-            One accountable supplier, from specification to service
-          </h2>
-          <p className="t-body-lg" style={{ margin: 0, color: "rgba(255,255,255,0.75)" }}>
-            We deliver reliable, high-performance monitoring solutions — and stay accountable for them. Expertise across
-            gas, flame, process and environmental monitoring means your sites run on dependable, certified systems.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {POINTS.map(({ Icon, title, body }) => (
-            <div
-              key={title}
-              className="flex gap-4 p-6"
-              style={{
-                border: "1px solid rgba(255,255,255,0.2)",
-                borderRadius: "var(--radius-lg)",
-                background: "rgba(255,255,255,0.08)",
-              }}
-            >
-              <span
-                className="inline-flex items-center justify-center shrink-0"
-                style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: "var(--radius-md)",
-                  background: "rgba(255,255,255,0.15)",
-                }}
-              >
-                <Icon size={22} color="#fff" strokeWidth={2} />
-              </span>
-              <div>
-                <h3 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 600, color: "#fff" }}>{title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: "22px", color: "rgba(255,255,255,0.7)" }}>{body}</p>
-              </div>
+    <section id="why" className="yg-sec" style={{ padding: "104px 0", position: "relative", overflow: "hidden" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 var(--yg-gutter)", position: "relative", zIndex: 1 }}>
+        <div className="yg-two" style={{ display: "grid", gridTemplateColumns: ".8fr 1.2fr", gap: 60, alignItems: "start" }}>
+          <div className="yg-why-intro" data-reveal-l="" style={{ position: "sticky", top: 104 }}>
+            <div style={{ ...mono, fontSize: 12, letterSpacing: ".12em", textTransform: "uppercase", color: "#0E5FCB", marginBottom: 20 }}>
+              WHY YAMIN GLOBAL
             </div>
-          ))}
+            <h2 style={{ fontSize: "clamp(32px,3.8vw,46px)", lineHeight: 1.06, letterSpacing: "-0.03em", fontWeight: 600, margin: "0 0 20px" }}>
+              One accountable supplier, from spec to service
+            </h2>
+            <p style={{ fontSize: 17, lineHeight: 1.6, color: "#46505C", margin: "0 0 28px" }}>
+              We deliver reliable, certified monitoring solutions — and stay accountable for them across gas,
+              flame, process and environmental monitoring.
+            </p>
+          </div>
+          <div style={{ borderTop: "1px solid #E4E8EE" }}>
+            {HOME_VALUES.map((v) => (
+              <div
+                key={v.no}
+                data-reveal=""
+                style={{ display: "grid", gridTemplateColumns: "64px 1fr", gap: 24, padding: "30px 8px", borderBottom: "1px solid #E4E8EE" }}
+              >
+                <span style={{ ...mono, fontSize: 13, fontWeight: 700, color: "#0E5FCB" }}>{v.no}</span>
+                <div>
+                  <h3 style={{ fontSize: 22, fontWeight: 600, letterSpacing: "-0.02em", margin: "0 0 9px" }}>{v.title}</h3>
+                  <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#5C6675", margin: 0, maxWidth: 520 }}>{v.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

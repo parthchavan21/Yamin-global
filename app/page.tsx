@@ -1,9 +1,12 @@
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteHero } from "@/components/site/SiteHero";
+import { CertificationStrip } from "@/components/site/CertificationStrip";
 import { CategoryGrid } from "@/components/site/CategoryGrid";
+import { FeaturedBand } from "@/components/site/FeaturedBand";
 import { IndustriesServed } from "@/components/site/IndustriesServed";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
 import { Faq } from "@/components/site/Faq";
+import { EnquirySection } from "@/components/site/EnquirySection";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SITE, SITE_URL, GAS_PRODUCTS, FLAME_PRODUCTS } from "@/lib/site";
 
@@ -60,15 +63,20 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SiteHeader />
-      <main>
-        <SiteHero />
-        <CategoryGrid />
-        <IndustriesServed />
-        <WhyChooseUs />
-        <Faq />
-      </main>
-      <SiteFooter />
+      <div className="yg-page">
+        <SiteHeader />
+        <main>
+          <SiteHero />
+          <CertificationStrip />
+          <CategoryGrid />
+          <FeaturedBand />
+          <IndustriesServed />
+          <WhyChooseUs />
+          <Faq />
+          <EnquirySection />
+        </main>
+        <SiteFooter />
+      </div>
     </>
   );
 }
