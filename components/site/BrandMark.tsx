@@ -6,8 +6,8 @@ export function BrandMark({ className = "h-10 w-auto" }: { className?: string })
     <Image
       src="/assets/logo.svg"
       alt="Yamin Global FZC"
-      width={344}
-      height={285}
+      width={449}
+      height={120}
       priority
       unoptimized
       className={className}
