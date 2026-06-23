@@ -59,7 +59,7 @@ export function WhyChooseUs() {
 
                 <div className="yg-why-textcell relative z-[1]">
                   <span className="font-yg-mono text-[13px] font-bold text-yg-blue">{v.no}</span>
-                  <h3 className="my-3 text-[30px] font-semibold tracking-[-0.02em]">{v.title}</h3>
+                  <h3 className="my-3 text-[24px] leading-[1.4] font-semibold tracking-[-0.02em] md:text-[30px] md:leading-normal">{v.title}</h3>
                   <p className="m-0 max-w-[520px] text-[16px] leading-[1.65] text-[#5C6675]">{v.body}</p>
                 </div>
 

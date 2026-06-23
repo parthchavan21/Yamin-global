@@ -533,6 +533,12 @@ body {
 
 /* True mobile: 20px side gutters + tightened type. The font sizes use
    !important because the source values are set as inline styles. */
+/* Footer stacks as a single block flow on default / sm screens (< md). */
+@media (max-width: 767px) {
+  .yg-footer-grid { display: block !important; }
+  .yg-footer-grid > * + * { margin-top: 28px !important; }
+}
+
 @media (max-width: 640px) {
   :root { --yg-gutter: 20px; }
   .yg-hero { padding-top: 90px !important; }
