@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { EnquirySection } from "@/components/site/EnquirySection";
 import { EmberDetectorGrid } from "@/components/products/EmberDetectorGrid";
 import { EmberDetectorFaq } from "@/components/products/EmberDetectorFaq";
 
@@ -45,11 +46,11 @@ export default function EmberDetectorPage() {
           aria-labelledby="emb-hero-heading"
           style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] items-center">
 
               {/* Left: copy */}
-              <div className="py-12 md:py-16 lg:py-20 flex flex-col">
+              <div className="py-20 md:py-28 lg:py-32 flex flex-col">
                 <span className="t-label block mb-4" style={{ color: "var(--content-brand)" }}>
                   Ember Detectors
                 </span>
@@ -76,7 +77,7 @@ export default function EmberDetectorPage() {
               {/* Right: image */}
               <div className="w-full flex items-center justify-center lg:justify-end">
                 <Image
-                  src="/products/ember-detector/EMB-7700-FLP.webp"
+                  src="/assets/products/ember-detector/EMB-7700-FLP.webp"
                   alt="Yamin Global EMB-7700-FLP ember detector"
                   width={560}
                   height={480}
@@ -98,7 +99,7 @@ export default function EmberDetectorPage() {
           aria-labelledby="emb-why-heading"
           style={{ background: "var(--surface-secondary)", borderTop: "1px solid var(--border-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
               <span className="t-label block mb-3" style={{ color: "var(--content-brand)" }}>
                 Why us
               </span>
@@ -136,7 +137,7 @@ export default function EmberDetectorPage() {
           aria-labelledby="emb-how-heading"
           style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
                 <h2 id="emb-how-heading" className="t-h2" style={{ margin: "0 0 20px" }}>
@@ -154,7 +155,7 @@ export default function EmberDetectorPage() {
               </div>
               <div className="w-full flex items-center justify-center lg:justify-end">
                 <Image
-                  src="/products/ember-detector/howitworks.png"
+                  src="/assets/products/ember-detector/howitworks.png"
                   alt="How an ember detector works"
                   width={560}
                   height={420}
@@ -172,7 +173,7 @@ export default function EmberDetectorPage() {
           aria-labelledby="emb-apps-heading"
           style={{ background: "var(--surface-secondary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
             <h2 id="emb-apps-heading" className="t-h2" style={{ margin: "0 0 40px" }}>
               Applications of Ember Detector
             </h2>
@@ -202,6 +203,7 @@ export default function EmberDetectorPage() {
 
         {/* ── FAQ ───────────────────────────────────────────────────── */}
         <EmberDetectorFaq />
+        <EnquirySection />
       </main>
       <SiteFooter />
     </>

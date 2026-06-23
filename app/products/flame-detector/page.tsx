@@ -1,16 +1,18 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { Factory, Plane, Building2, Flame, Ship, type LucideProps } from "lucide-react";
+import type { ComponentType } from "react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { EnquirySection } from "@/components/site/EnquirySection";
 import { FlameDetectorGrid } from "@/components/products/FlameDetectorGrid";
 import { FlameDetectorFaq } from "@/components/products/FlameDetectorFaq";
 
-const APPLICATIONS = [
-  "Industrial Facilities",
-  "Aerospace Safety",
-  "Commercial Buildings",
-  "Oil & Gas Sector",
-  "Marine Safety",
+const APPLICATIONS: { Icon: ComponentType<LucideProps>; label: string }[] = [
+  { Icon: Factory, label: "Industrial Facilities" },
+  { Icon: Plane, label: "Aerospace Safety" },
+  { Icon: Building2, label: "Commercial Buildings" },
+  { Icon: Flame, label: "Oil & Gas Sector" },
+  { Icon: Ship, label: "Marine Safety" },
 ];
 
 const DETECTOR_TYPES = [
@@ -40,13 +42,13 @@ export default function FlameDetectorPage() {
         {/* ── Hero ──────────────────────────────────────────────────── */}
         <section
           aria-labelledby="fld-hero-heading"
-          style={{ background: "var(--surface-primary)",  }}
+          style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-20 md:py-28 lg:py-32">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] items-center">
 
               {/* Left: copy */}
-              <div className="py-12 md:py-16 lg:py-20 flex flex-col">
+              <div className="flex flex-col">
                 <span className="t-label block mb-4" style={{ color: "var(--content-brand)" }}>
                   Flame Detectors
                 </span>
@@ -74,7 +76,7 @@ export default function FlameDetectorPage() {
               {/* Right: image */}
               <div className="w-full flex items-center justify-center lg:justify-end">
                 <Image
-                  src="/Pumpjack-B2.png"
+                  src="/assets/Pumpjack-B2.png"
                   alt="Industrial environment for flame detection"
                   width={560}
                   height={480}
@@ -96,44 +98,55 @@ export default function FlameDetectorPage() {
           aria-labelledby="fld-tech-heading"
           style={{ background: "var(--surface-secondary)", borderTop: "1px solid var(--border-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-20">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
+            {/* Technology intro */}
+            <div className="max-w-[720px]">
+              <span className="t-label block mb-4" style={{ color: "var(--content-brand)" }}>
+                The Technology
+              </span>
+              <h2 id="fld-tech-heading" className="t-h2" style={{ margin: "0 0 16px" }}>
+                Discover the Cutting-Edge Technology Behind Flame Detectors
+              </h2>
+              <p className="t-body-lg t-secondary" style={{ margin: 0 }}>
+                Welcome to the world of flame detectors, where safety meets innovation. We&apos;ll delve into
+                the incredible technology that powers flame detectors, explore their extensive applications,
+                and introduce you to a range of exceptional products designed to safeguard your environment.
+              </p>
+            </div>
 
-              {/* Left: technology */}
-              <div>
-                <h2 id="fld-tech-heading" className="t-h2" style={{ margin: "0 0 16px" }}>
-                  Discover the Cutting-Edge Technology Behind Flame Detectors
-                </h2>
-                <p className="t-body-lg t-secondary" style={{ margin: 0, maxWidth: 580 }}>
-                  Welcome to the world of flame detectors, where safety meets innovation. We&apos;ll delve into
-                  the incredible technology that powers flame detectors, explore their extensive applications,
-                  and introduce you to a range of exceptional products designed to safeguard your environment.
-                </p>
+            {/* Applications — icon cards */}
+            <div className="mt-12 md:mt-16">
+              <h3 className="t-label" style={{ margin: "0 0 20px", color: "var(--content-secondary)" }}>
+                Applications
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                {APPLICATIONS.map(({ Icon, label }) => (
+                  <div
+                    key={label}
+                    className="group flex flex-col gap-4 p-5 transition-all duration-200 hover:-translate-y-1"
+                    style={{
+                      background: "var(--surface-primary)",
+                      border: "1px solid var(--border-primary)",
+                      borderRadius: "var(--radius-lg)",
+                    }}
+                  >
+                    <span
+                      className="inline-flex items-center justify-center shrink-0 transition-colors duration-200"
+                      style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: "var(--radius-md)",
+                        background: "var(--surface-brand)",
+                      }}
+                    >
+                      <Icon size={22} color="var(--surface-primary)" strokeWidth={1.75} />
+                    </span>
+                    <span style={{ fontSize: 15, fontWeight: 600, lineHeight: "20px", color: "var(--content-primary)" }}>
+                      {label}
+                    </span>
+                  </div>
+                ))}
               </div>
-
-              {/* Right: applications */}
-              <div>
-                <h3 style={{ margin: "0 0 20px", fontSize: 20, fontWeight: 600 }}>Applications</h3>
-                <ul className="flex flex-col gap-3 list-none m-0 p-0">
-                  {APPLICATIONS.map((app) => (
-                    <li key={app} className="flex items-center gap-3">
-                      <span
-                        className="inline-flex items-center justify-center shrink-0"
-                        style={{
-                          width: 22,
-                          height: 22,
-                          borderRadius: "999px",
-                          background: "var(--surface-brand-subtle)",
-                        }}
-                      >
-                        <Check size={13} color="var(--content-brand)" strokeWidth={2.5} />
-                      </span>
-                      <span style={{ fontSize: 15, color: "var(--content-secondary)" }}>{app}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
             </div>
           </div>
         </section>
@@ -143,7 +156,7 @@ export default function FlameDetectorPage() {
           aria-labelledby="fld-types-heading"
           style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
             <h2 id="fld-types-heading" className="t-h2" style={{ margin: "0 0 40px" }}>
               Types of Flame Detectors
             </h2>
@@ -168,6 +181,7 @@ export default function FlameDetectorPage() {
 
         {/* ── FAQ ───────────────────────────────────────────────────── */}
         <FlameDetectorFaq />
+        <EnquirySection />
       </main>
       <SiteFooter />
     </>

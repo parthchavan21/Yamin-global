@@ -3,8 +3,6 @@
 import { useRef, useState } from "react";
 import { HOME_INDUSTRIES } from "@/lib/home";
 
-const mono = { fontFamily: "var(--yg-mono)" } as const;
-
 export function IndustriesServed() {
   // Floating image that follows the pointer while a row is hovered.
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -22,64 +20,48 @@ export function IndustriesServed() {
   return (
     <section
       id="industries"
-      className="yg-sec"
-      style={{ padding: "104px 0", background: "#0E5FCB", color: "#fff", position: "relative", overflow: "hidden" }}
+      className="yg-sec relative overflow-hidden bg-yg-blue py-[104px] text-white"
     >
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 var(--yg-gutter)", position: "relative", zIndex: 1 }}>
+      <div className="relative z-[1] mx-auto max-w-[1280px] px-[var(--yg-gutter)]">
         <div
-          className="yg-two"
+          className="yg-two mb-[46px] flex w-[600px] max-w-full flex-col items-stretch gap-[30px]"
           data-reveal=""
-          style={{ display: "flex", flexDirection: "column", gap: 30, alignItems: "stretch", marginBottom: 46, width: 600, maxWidth: "100%" }}
         >
           <div>
-            <div style={{ ...mono, fontSize: 12, letterSpacing: ".12em", textTransform: "uppercase", color: "#DCE8FF", marginBottom: 20 }}>
+            <div className="mb-5 font-yg-mono text-[12px] uppercase tracking-[0.12em] text-[#DCE8FF]">
               INDUSTRIES WE SERVE
             </div>
-            <h2 style={{ fontSize: "clamp(32px,4.2vw,50px)", lineHeight: 1.04, letterSpacing: "-0.03em", fontWeight: 600, margin: 0 }}>
+            <h2 className="m-0 text-[40px] font-semibold leading-[1.04] tracking-[-0.03em]">
               Built for the sites that can&apos;t afford downtime
             </h2>
           </div>
-          <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,.86)", margin: "0 0 6px" }}>
+          <p className="mb-1.5 text-[17px] leading-[1.6] text-white/[0.86]">
             From hazardous-area gas detection to validated cold chains, we equip operations where accuracy
             and compliance are non-negotiable.
           </p>
         </div>
 
-        <div style={{ borderTop: "1px solid rgba(255,255,255,.13)" }}>
+        <div className="border-t border-white/[0.13]">
           {HOME_INDUSTRIES.map((ind) => (
             <div
               key={ind.no}
-              className="yg-row"
+              className={`yg-row grid grid-cols-[64px_1fr_auto] items-center gap-6 border-b border-white/[0.13] p-[22px] ${
+                hoverImage ? "cursor-none" : "cursor-default"
+              }`}
               onMouseEnter={(e) => {
                 setHoverImage(ind.image);
                 moveCursor(e);
               }}
               onMouseMove={moveCursor}
               onMouseLeave={() => setHoverImage(null)}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "64px 1fr auto",
-                gap: 24,
-                alignItems: "center",
-                padding: "22px",
-                borderBottom: "1px solid rgba(255,255,255,.13)",
-                // hide the native cursor so only the image shows
-                cursor: hoverImage ? "none" : "default",
-              }}
             >
-              <span className="yg-row-no" style={{ ...mono, fontSize: 13, color: "rgba(255,255,255,.55)", transition: "color .3s ease" }}>
+              <span className="yg-row-no font-yg-mono text-[13px] text-white/55 transition-colors">
                 {ind.no}
               </span>
-              <span
-                className="yg-row-name"
-                style={{ fontSize: "clamp(22px,2.6vw,34px)", fontWeight: 500, letterSpacing: "-0.02em", color: "#fff", transition: "color .3s ease" }}
-              >
+              <span className="yg-row-name text-[clamp(22px,2.6vw,34px)] font-medium tracking-[-0.02em] text-white transition-colors">
                 {ind.name}
               </span>
-              <span
-                className="yg-row-ar"
-                style={{ ...mono, fontSize: 18, color: "#fff", opacity: 0, transform: "translateX(-8px)", transition: "all .3s ease" }}
-              >
+              <span className="yg-row-ar -translate-x-2 font-yg-mono text-[18px] text-white opacity-0 transition-all">
                 →
               </span>
             </div>
@@ -92,27 +74,13 @@ export function IndustriesServed() {
       <div
         ref={cursorRef}
         aria-hidden="true"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 80,
-          pointerEvents: "none",
-          width: "var(--yg-cursor-w)",
-          transform: "translate(-50%, -50%)",
-          opacity: hoverImage ? 1 : 0,
-          transition: "opacity .25s ease",
-          overflow: "hidden",
-          boxShadow: "0 24px 60px -28px rgba(14,26,43,.65)",
-        }}
+        className={`pointer-events-none fixed left-0 top-0 z-[80] w-[var(--yg-cursor-w)] -translate-x-1/2 -translate-y-1/2 overflow-hidden shadow-[0_24px_60px_-28px_rgba(14,26,43,0.65)] transition-[opacity,transform] duration-[280ms] ease-out ${
+          hoverImage ? "opacity-100 scale-100" : "opacity-0 scale-[0.8]"
+        }`}
       >
         {hoverImage && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={hoverImage}
-            alt=""
-            style={{ display: "block", width: "100%", height: "auto", objectFit: "cover" }}
-          />
+          <img src={hoverImage} alt="" className="block h-auto w-full object-cover" />
         )}
       </div>
     </section>

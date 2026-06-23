@@ -32,7 +32,7 @@ export function YoutubeSlideshow() {
         borderTop: "1px solid var(--border-primary)",
       }}
     >
-      <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+      <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
         {/* Heading */}
         <h2
           id="yt-section-heading"

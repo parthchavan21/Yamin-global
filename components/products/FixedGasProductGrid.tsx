@@ -9,80 +9,80 @@ const PRODUCTS = [
     id: "gt-2500-flp",
     model: "GT-2500-FLP",
     name: "Smart Gas Detector with LED Display",
-    image: "/products/fixed-gas-detector/GT-2500-FLP-1.webp",
+    image: "/assets/products/fixed-gas-detector/GT-2500-FLP-1.webp",
     href: "/products/fixed-gas-detector/gt-2500-flp",
   },
   {
     id: "gt-2500-wp",
     model: "GT-2500-WP",
     name: "Smart Gas Detector for Oxygen, VOC and Toxic Gas",
-    image: "/products/fixed-gas-detector/GT-2500-WP.webp",
+    image: "/assets/products/fixed-gas-detector/GT-2500-WP.webp",
   },
   {
     id: "gt-2511-flp-sil",
     model: "GT-2511-FLP",
     name: "SIL 2 Certified Smart Gas Detector",
-    image: "/products/fixed-gas-detector/GT-2511-FLP-SIL-2-7.png",
+    image: "/assets/products/fixed-gas-detector/GT-2511-FLP-SIL-2-7.png",
   },
   {
     id: "gt-2511-flp",
     model: "GT-2511-FLP",
     name: "Smart Gas Detector with LCD Display",
-    image: "/products/fixed-gas-detector/GT-2511-FLP.webp",
+    image: "/assets/products/fixed-gas-detector/GT-2511-FLP.webp",
   },
   {
     id: "gt-2511-wp",
     model: "GT-2511-WP",
     name: "Smart Gas Detector",
-    image: "/products/fixed-gas-detector/GT-2511-WP.webp",
+    image: "/assets/products/fixed-gas-detector/GT-2511-WP.webp",
   },
   {
     id: "gt-1033-flp",
     model: "GT-1033-FLP",
     name: "2 Wire Loop Powered Transmitter",
-    image: "/products/fixed-gas-detector/GT-1033-FLP-PPM-copy.webp",
+    image: "/assets/products/fixed-gas-detector/GT-1033-FLP-PPM-copy.webp",
   },
   {
     id: "gt-1033-wp",
     model: "GT-1033-WP",
     name: "Smart Gas Detector for Industrial Safety",
-    image: "/products/fixed-gas-detector/GT-1033-WP-1.webp",
+    image: "/assets/products/fixed-gas-detector/GT-1033-WP-1.webp",
   },
   {
     id: "gt-4220-flp",
     model: "GT-4220-FLP-A",
     name: "Gas Leak Detector for Combustible Gases",
-    image: "/products/fixed-gas-detector/GT-4220-FLP.webp",
+    image: "/assets/products/fixed-gas-detector/GT-4220-FLP.webp",
   },
   {
     id: "gt-4220-wp-hcf",
     model: "GT-4220-WP-HCF",
     name: "LPG/PNG/CNG Gas Leak Detector for Enhanced Safety",
-    image: "/products/fixed-gas-detector/GT-4220-WP.webp",
+    image: "/assets/products/fixed-gas-detector/GT-4220-WP.webp",
   },
   {
     id: "gt-4000-flp",
     model: "GT-4000-FLP",
     name: "Combustible Gas Leak Detector",
-    image: "/products/fixed-gas-detector/GT-4000-FLP-1.webp",
+    image: "/assets/products/fixed-gas-detector/GT-4000-FLP-1.webp",
   },
   {
     id: "gt-5022-flp",
     model: "GT-5022-FLP",
     name: "Smart Gas Transmitter",
-    image: "/products/fixed-gas-detector/GT-5022-FLP-HCF.webp",
+    image: "/assets/products/fixed-gas-detector/GT-5022-FLP-HCF.webp",
   },
   {
     id: "bgd-6033-flp",
     model: "BGD-6033-FLP",
     name: "Battery Powered Gas Detector",
-    image: "/products/fixed-gas-detector/BGD-6033-FLP.webp",
+    image: "/assets/products/fixed-gas-detector/BGD-6033-FLP.webp",
   },
   {
     id: "gla-222-flp",
     model: "GLA-222-FLP",
     name: "LPG Gas Leak Detector",
-    image: "/products/fixed-gas-detector/GLA-222-FLP.webp",
+    image: "/assets/products/fixed-gas-detector/GLA-222-FLP.webp",
   },
 ] as const;
 
@@ -114,7 +114,7 @@ export function FixedGasProductGrid() {
   );
 
   return (
-    <section aria-labelledby="fgd-products-heading" className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+    <section aria-labelledby="fgd-products-heading" className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
       {/* Header row: heading + search */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
         <h2

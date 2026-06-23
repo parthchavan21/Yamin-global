@@ -11,7 +11,7 @@ const PRODUCTS = [
     id: "fld-3311-flp",
     model: "FLD-3311-FLP",
     name: "UV and Triple IR Sensor",
-    image: "/products/flame-detector/FLD-3311-FLP.webp",
+    image: "/assets/products/flame-detector/FLD-3311-FLP.webp",
     category: "flame" as Category,
     categoryLabel: "Flame Detector",
   },
@@ -19,7 +19,7 @@ const PRODUCTS = [
     id: "fld-0011-flp",
     model: "FLD-0011-FLP",
     name: "UV Flame (Radiant Energy) Detector",
-    image: "/products/flame-detector/FLD-0011-FLP.webp",
+    image: "/assets/products/flame-detector/FLD-0011-FLP.webp",
     category: "flame" as Category,
     categoryLabel: "Flame Detector",
   },
@@ -27,7 +27,7 @@ const PRODUCTS = [
     id: "fld-1111-flp",
     model: "FLD-1111-FLP",
     name: "UV and IR Flame (Radiant Energy) Detector",
-    image: "/products/flame-detector/FLD-1111-FLP-1.webp",
+    image: "/assets/products/flame-detector/FLD-1111-FLP-1.webp",
     category: "flame" as Category,
     categoryLabel: "Flame Detector",
   },
@@ -35,7 +35,7 @@ const PRODUCTS = [
     id: "fld-3300-flp",
     model: "FLD-3300-FLP",
     name: "Triple IR Sensor Flame Detector",
-    image: "/products/flame-detector/FLD-3300-FLP.webp",
+    image: "/assets/products/flame-detector/FLD-3300-FLP.webp",
     category: "flame" as Category,
     categoryLabel: "Flame Detector",
   },
@@ -43,7 +43,7 @@ const PRODUCTS = [
     id: "fld-3311-flp-sil",
     model: "FLD-3311-FLP",
     name: "UV & Triple IR SIL 2 Certified Flame Detector",
-    image: "/products/flame-detector/FLD-3311-FLP-GT-2511-FLP-SIL-2-4.png",
+    image: "/assets/products/flame-detector/FLD-3311-FLP-GT-2511-FLP-SIL-2-4.png",
     category: "flame" as Category,
     categoryLabel: "Flame Detector",
   },
@@ -51,7 +51,7 @@ const PRODUCTS = [
     id: "fld-1111-flp-ultrafast",
     model: "FLD-1111-FLP",
     name: "Ultra Fast Flame (Radiant Energy) Detector",
-    image: "/products/flame-detector/FLD-1111-FLP-ultrafast.webp",
+    image: "/assets/products/flame-detector/FLD-1111-FLP-ultrafast.webp",
     category: "ultrafast" as Category,
     categoryLabel: "Ultra Fast Flame Detector",
   },
@@ -94,7 +94,7 @@ export function FlameDetectorGrid() {
   return (
     <section
       aria-labelledby="fld-products-heading"
-      className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20"
+      className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20"
     >
       {/* Row 1: heading + search */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
