@@ -23,7 +23,7 @@ export default function FixedGasDetectorPage() {
             borderBottom: "1px solid var(--border-primary)",
           }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 pt-28 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 pt-24 pb-12 md:pt-28 md:pb-14 lg:pt-32 lg:pb-16">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] items-center">
 
               {/* ── Left: copy ─────────────────────────────────────── */}
