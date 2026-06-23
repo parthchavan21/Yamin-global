@@ -18,7 +18,7 @@ export function FeaturedBand() {
             </p>
             <a
               className="yg-cta-line yg-mono self-start bg-yg-ink px-[26px] py-[15px] text-[13px] uppercase tracking-[0.05em] text-white"
-              href="#why"
+              href="#enquiry"
             >
               <span>Request A Quote &nbsp;→</span>
             </a>

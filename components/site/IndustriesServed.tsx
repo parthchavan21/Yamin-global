@@ -61,9 +61,6 @@ export function IndustriesServed() {
               <span className="yg-row-name text-[clamp(22px,2.6vw,34px)] font-medium tracking-[-0.02em] text-white transition-colors">
                 {ind.name}
               </span>
-              <span className="yg-row-ar -translate-x-2 font-yg-mono text-[18px] text-white opacity-0 transition-all">
-                →
-              </span>
             </div>
           ))}
         </div>
