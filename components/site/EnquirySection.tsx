@@ -33,7 +33,7 @@ export function EnquirySection() {
             <h2 className="mb-[18px] text-[40px] font-semibold leading-[1.02] tracking-[-0.03em]">
               Tell us what you need to monitor.
             </h2>
-            <p className="mb-9 max-w-[420px] text-[18px] leading-[1.6] text-[#9FB0C6]">
+            <p className="mb-9 max-w-[420px] text-[16px] md:text-[18px] leading-[1.6] text-[#9FB0C6]">
               Share your requirements and the standards you report against — an engineer responds within one
               business day.
             </p>

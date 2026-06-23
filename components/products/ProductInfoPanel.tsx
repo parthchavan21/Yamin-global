@@ -56,17 +56,16 @@ export function ProductInfoPanel({
       </p>
 
       {/* CTA buttons */}
-      <div className="flex gap-3 flex-wrap">
+      <div className="flex gap-3">
         <a
           href="#enquiry"
-          className="flex items-center justify-center px-6 h-11 text-sm font-medium no-underline"
+          className="flex flex-1 items-center justify-center px-6 h-11 text-sm font-medium no-underline"
           style={{
             border: "1.5px solid var(--border-primary)",
             color: "var(--content-primary)",
             fontFamily: "var(--font-sans)",
             borderRadius: "var(--radius-sm)",
             transition: "border-color .12s ease",
-            minWidth: 140,
           }}
           onMouseEnter={(e) =>
             (e.currentTarget.style.borderColor = "var(--content-brand)")
@@ -77,14 +76,13 @@ export function ProductInfoPanel({
         </a>
         <a
           href={datasheetHref ?? "#datasheet"}
-          className="flex items-center justify-center px-6 h-11 text-sm font-medium no-underline"
+          className="flex flex-1 items-center justify-center px-6 h-11 text-sm font-medium no-underline"
           style={{
             background: "var(--content-brand)",
             color: "#fff",
             borderRadius: "var(--radius-sm)",
             fontFamily: "var(--font-sans)",
             transition: "opacity .12s ease",
-            minWidth: 140,
           }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "")}

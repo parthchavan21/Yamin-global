@@ -3,7 +3,7 @@ import Image from "next/image";
 export function FeaturedBand() {
   return (
     <section className="yg-sec pb-[104px]">
-      <div className="mx-auto max-w-[1440px] px-9">
+      <div className="mx-auto max-w-[1440px] px-5 md:px-9">
         <div className="yg-feat grid grid-cols-2 border border-[#E4E8EE]" data-reveal="">
           <div className="yg-feat-pad flex flex-col justify-center px-12 py-[54px]">
             <div className="mb-5 font-yg-mono text-[12px] uppercase tracking-[0.12em] text-yg-blue">
@@ -20,7 +20,7 @@ export function FeaturedBand() {
               className="yg-cta-line yg-mono self-start bg-yg-ink px-[26px] py-[15px] text-[13px] uppercase tracking-[0.05em] text-white"
               href="#why"
             >
-              <span>How we work &nbsp;→</span>
+              <span>Why Choose Us &nbsp;→</span>
             </a>
           </div>
           <div className="relative min-h-[380px] border-l border-[#E4E8EE] bg-[#F4F6F9]">
