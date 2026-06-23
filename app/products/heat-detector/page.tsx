@@ -3,6 +3,7 @@ import { Zap, Settings, Thermometer, BatteryLow, Network, MousePointerClick, typ
 import type { ComponentType } from "react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { EnquirySection } from "@/components/site/EnquirySection";
 import { HeatDetectorGrid } from "@/components/products/HeatDetectorGrid";
 
 const FEATURES: { Icon: ComponentType<LucideProps>; text: string }[] = [
@@ -24,11 +25,11 @@ export default function HeatDetectorPage() {
           aria-labelledby="htd-hero-heading"
           style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-20 md:py-28 lg:py-32">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] items-center">
 
               {/* Left: copy */}
-              <div className="py-12 md:py-16 lg:py-20 flex flex-col">
+              <div className="flex flex-col">
                 <span className="t-label block mb-4" style={{ color: "var(--content-brand)" }}>
                   Heat Detectors
                 </span>
@@ -54,7 +55,7 @@ export default function HeatDetectorPage() {
               {/* Right: image */}
               <div className="w-full flex items-center justify-center lg:justify-end">
                 <Image
-                  src="/products/heat-detector/HTD-8822-FLP.webp"
+                  src="/assets/products/heat-detector/HTD-8822-FLP.webp"
                   alt="Yamin Global HTD-8822-FLP heat detector"
                   width={560}
                   height={480}
@@ -75,7 +76,7 @@ export default function HeatDetectorPage() {
         <section
           style={{ background: "var(--surface-secondary)", borderTop: "1px solid var(--border-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20 flex justify-center">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20 flex justify-center">
             <div
               className="w-full max-w-2xl flex flex-col items-center text-center p-10"
               style={{
@@ -105,7 +106,7 @@ export default function HeatDetectorPage() {
           aria-labelledby="htd-how-heading"
           style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
                 <h2 id="htd-how-heading" className="t-h2" style={{ margin: "0 0 20px" }}>
@@ -120,7 +121,7 @@ export default function HeatDetectorPage() {
               </div>
               <div className="w-full flex items-center justify-center lg:justify-end">
                 <Image
-                  src="/products/heat-detector/howitworks-1.png"
+                  src="/assets/products/heat-detector/howitworks-1.png"
                   alt="How a heat detector works"
                   width={560}
                   height={420}
@@ -138,7 +139,7 @@ export default function HeatDetectorPage() {
           aria-labelledby="htd-features-heading"
           style={{ background: "var(--surface-secondary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
             <h2 id="htd-features-heading" className="t-h2" style={{ margin: "0 0 40px" }}>
               Features of Yamin Global Heat Detection System
             </h2>
@@ -159,10 +160,10 @@ export default function HeatDetectorPage() {
                       width: 40,
                       height: 40,
                       borderRadius: "var(--radius-md)",
-                      background: "var(--surface-brand-subtle)",
+                      background: "var(--surface-brand)",
                     }}
                   >
-                    <Icon size={20} color="var(--content-brand)" strokeWidth={2} />
+                    <Icon size={20} color="var(--surface-primary)" strokeWidth={2} />
                   </span>
                   <span style={{ fontSize: 14, fontWeight: 500, lineHeight: "20px", color: "var(--content-primary)" }}>
                     {text}
@@ -172,6 +173,7 @@ export default function HeatDetectorPage() {
             </div>
           </div>
         </section>
+        <EnquirySection />
       </main>
       <SiteFooter />
     </>

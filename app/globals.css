@@ -1,5 +1,33 @@
 @import "tailwindcss";
 
+/* Yamin Global v2 design tokens exposed to Tailwind utilities
+   (bg-yg-blue, text-yg-blue, border-yg-blue, font-yg-sans, font-yg-mono). */
+@theme {
+  --color-yg-blue: #0E5FCB;
+  --color-yg-ink: #0E1A2B;
+  --font-yg-sans: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-yg-mono: var(--font-space-mono), "Space Mono", ui-monospace, monospace;
+}
+
+/* Required Lenis smooth-scroll styles. Without these the html/body `height:100%`
+   caps the scrollable area, so the page gets stuck partway down on some devices. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 /* ==========================================================================
    Yamine Design System — ported from the Claude Design handoff bundle.
    Tokens → base utilities → component classes. Shadows are forbidden;
@@ -15,7 +43,7 @@
   --blue-300: #76ABE2;
   --blue-400: #4187D2;
   --blue-500: #1E6BBB;
-  --blue-600: #0F5CA6;   /* brand primary */
+  --blue-600: #0E5FCB;   /* brand primary — aligned with Yamin Global v2 (yg) blue */
   --blue-700: #0C4C8A;
   --blue-800: #0E3F70;
   --blue-900: #0F3559;
@@ -78,9 +106,9 @@
   --surface-info:           var(--blue-50);
 
   /* ---- Content -------------------------------------------------------- */
-  --content-primary:        var(--neutral-950);
-  --content-secondary:      var(--neutral-600);
-  --content-tertiary:       var(--neutral-500);
+  --content-primary:        #0E1A2B;          /* yg ink */
+  --content-secondary:      #46505C;          /* yg body grey */
+  --content-tertiary:       #8A93A0;          /* yg muted grey */
   --content-inverted:       var(--neutral-0);
   --content-brand:          var(--blue-600);
   --content-success:        var(--green-700);
@@ -116,7 +144,8 @@
   --focus-ring: 0 0 0 3px color-mix(in srgb, var(--blue-400) 45%, transparent);
 
   /* ---- Fonts (wired to next/font variables, with fallbacks) ----------- */
-  --font-sans: var(--font-satoshi), system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* Aligned with the Yamin Global v2 homepage face (Space Grotesk). */
+  --font-sans: var(--font-space-grotesk), "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, "SF Mono", "Roboto Mono", Menlo, Consolas, monospace;
 
   /* ---- Typography ----------------------------------------------------- */
@@ -127,7 +156,7 @@
 
   --type-display-size: 48px;  --type-display-line: 56px;  --type-display-weight: 600; --type-display-track: -0.02em;
   --type-h1-size: 36px;       --type-h1-line: 44px;       --type-h1-weight: 600;      --type-h1-track: -0.018em;
-  --type-h2-size: 28px;       --type-h2-line: 36px;       --type-h2-weight: 600;      --type-h2-track: -0.012em;
+  --type-h2-size: 40px;       --type-h2-line: 44px;       --type-h2-weight: 600;      --type-h2-track: -0.012em;
   --type-h3-size: 22px;       --type-h3-line: 30px;       --type-h3-weight: 600;      --type-h3-track: -0.006em;
   --type-subheading-size: 18px; --type-subheading-line: 26px; --type-subheading-weight: 500;
   --type-body-lg-size: 16px;  --type-body-lg-line: 26px;
@@ -145,8 +174,10 @@
   --gutter: 24px;
 
   /* ---- Radius --------------------------------------------------------- */
-  --radius-xs: 4px;  --radius-sm: 6px;  --radius-md: 8px;
-  --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 999px;
+  /* Sharp blueprint aesthetic — no rounded corners on boxes/cards/inputs/buttons.
+     (True circles like dots/spinners use hardcoded 999px/50%, so they stay round.) */
+  --radius-xs: 0;  --radius-sm: 0;  --radius-md: 0;
+  --radius-lg: 0;  --radius-xl: 0;  --radius-pill: 0;
 
   /* ---- Stroke --------------------------------------------------------- */
   --stroke-hairline: 1px;
@@ -382,7 +413,10 @@ body {
    marquees, scroll-driven reveals. Scoped under .yg-page so it never touches
    the shared Satoshi-based design system above.
    ========================================================================== */
-.yg-page {
+/* yg tokens live on :root so the shared header/footer (rendered OUTSIDE
+   .yg-page on the product pages) resolve the same font, gutter and colors —
+   keeping the navbar consistent across every page. */
+:root {
   --yg-font: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
   --yg-mono: var(--font-space-mono), "Space Mono", ui-monospace, monospace;
   --yg-blue: #0E5FCB;
@@ -391,6 +425,8 @@ body {
   /* Width of the industries hover-cursor image. Scales with the viewport;
      tweak the clamp min/preferred/max to resize it per screen. */
   --yg-cursor-w: clamp(150px, 16vw, 260px);
+}
+.yg-page {
   font-family: var(--yg-font);
   color: var(--yg-ink);
   background: #fff;
@@ -408,13 +444,18 @@ body {
 @keyframes ygMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes ygMarqueeR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-.yg-page [data-reveal] { animation: ygReveal linear both; animation-timeline: view(); animation-range: entry 2% cover 24%; }
-.yg-page [data-reveal-l] { animation: ygRevealL linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+.yg-page [data-reveal] { animation: ygReveal linear both; animation-timeline: view(); animation-range: entry 2% entry 100%; }
+.yg-page [data-reveal-l] { animation: ygRevealL linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
 
+.yg-marq {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
 .yg-marq:hover .yg-mt { animation-play-state: paused; }
 .yg-navlink { position: relative; }
 .yg-navlink::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 1.5px; width: 0; background: #0E5FCB; transition: width .3s ease; }
 .yg-navlink:hover::after { width: 100%; }
+.yg-drop-link:hover { background: #F6F9FD; color: #0E5FCB !important; }
 .yg-cta:hover { background: #0A4AAE !important; }
 .yg-cta-line { position: relative; overflow: hidden; }
 .yg-cta-line span { position: relative; z-index: 1; transition: color .3s ease; }
@@ -444,6 +485,24 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .yg-page [data-reveal], .yg-page [data-reveal-l] { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
+/* "Why Yamin Global" alternating rows — flipped rows put the image on the left. */
+.yg-why-flip .yg-why-imgcell { order: 1; }
+.yg-why-flip .yg-why-textcell { order: 2; }
+
+/* Full-viewport hero for the 1280px design breakpoint and below — fill the
+   screen and center the content vertically (clearing the fixed nav). */
+@media (max-width: 1280px) {
+  .yg-hero {
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 100px !important;
+    padding-bottom: 40px !important;
+  }
+  .yg-hero > div { width: 100%; }
+}
+
 @media (max-width: 980px) {
   .yg-hero-grid { grid-template-columns: 1fr !important; }
   .yg-h1 { font-size: 46px !important; width: auto !important; }
@@ -463,6 +522,10 @@ body {
   .yg-hero { padding-top: 104px !important; padding-bottom: 44px !important; }
   /* single-column "Why" — drop the sticky so the intro can't overlap the list */
   .yg-why-intro { position: static !important; top: auto !important; }
+  /* stacked "Why" rows — image on top, text below, regardless of desktop side */
+  .yg-why-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .yg-why-row .yg-why-imgcell { order: 0 !important; }
+  .yg-why-row .yg-why-textcell { order: 1 !important; }
   /* stacked featured / enquiry blocks — 20px side padding */
   .yg-feat-pad { padding: 36px 20px !important; }
   .yg-form-pad { padding: 28px 20px !important; }
@@ -471,7 +534,7 @@ body {
 /* True mobile: 20px side gutters + tightened type. The font sizes use
    !important because the source values are set as inline styles. */
 @media (max-width: 640px) {
-  .yg-page { --yg-gutter: 20px; }
+  :root { --yg-gutter: 20px; }
   .yg-hero { padding-top: 90px !important; }
   .yg-h1 { font-size: 32px !important; line-height: 1.08 !important; }
   .yg-page h2 { font-size: 28px !important; line-height: 1.08 !important; letter-spacing: -0.02em !important; }

@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { EnquirySection } from "@/components/site/EnquirySection";
 import { Breadcrumb } from "@/components/products/Breadcrumb";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { ProductInfoPanel } from "@/components/products/ProductInfoPanel";
@@ -16,19 +17,19 @@ const product: ProductData = {
     "The GT-2500-FLP, a PESO certified Flameproof Smart Gas Detector/Transmitter, stands as a robust solution for the swift and dependable detection of Oxygen, Toxic, Combustible, and Volatile Organic Compounds (VOC) gas leaks. Its user-friendly design includes a 7-Segment LED display for digital gas concentration readouts and 8 LEDs providing clear indications of the instrument's status. With a standard 4-20mA signal output and three relay outputs, each with a 5A rating for both AC and DC, it ensures seamless integration into monitoring systems. The optional Isolated RS-485 Communication Port with MODBUS RTU PROTOCOL enhances connectivity. The device boasts a hot-swappable gas sensor module, allowing for easy maintenance and servicing, and features non-intrusive programming for the Flameproof Model using a Magnetic Wand.",
   images: [
     {
-      src: "/products/fixed-gas-detector/GT-2500-FLP-1.webp",
+      src: "/assets/products/fixed-gas-detector/GT-2500-FLP-1.webp",
       alt: "GT-2500-FLP Smart Gas Detector with LED Display — front view",
     },
     {
-      src: "/products/fixed-gas-detector/GT-2500-FLP-1.webp",
+      src: "/assets/products/fixed-gas-detector/GT-2500-FLP-1.webp",
       alt: "GT-2500-FLP Smart Gas Detector with LED Display — side view",
     },
     {
-      src: "/products/fixed-gas-detector/GT-2500-FLP-1.webp",
+      src: "/assets/products/fixed-gas-detector/GT-2500-FLP-1.webp",
       alt: "GT-2500-FLP Smart Gas Detector with LED Display — detail view",
     },
     {
-      src: "/products/fixed-gas-detector/GT-2500-FLP-1.webp",
+      src: "/assets/products/fixed-gas-detector/GT-2500-FLP-1.webp",
       alt: "GT-2500-FLP Smart Gas Detector with LED Display — installed view",
     },
   ],
@@ -175,13 +176,14 @@ export default function GT2500FLPPage() {
     <>
       <SiteHeader />
       <main>
-        <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 pt-10 md:pt-14 pb-12 md:pb-20">
+        <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 pt-[88px] md:pt-[104px] pb-12 md:pb-20">
 
-          {/* Product layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-start">
+          {/* Product layout — columns stretch so the gallery can stick while the
+              breadcrumb scrolls in step with the heading (kept top-aligned). */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16">
 
-            {/* ── Left: sticky breadcrumbs + image gallery ───────────── */}
-            <div className="lg:sticky lg:top-[120px] lg:self-start flex flex-col gap-6">
+            {/* ── Left: breadcrumb (scrolls) + sticky image gallery ──── */}
+            <div className="flex flex-col gap-6">
               <Breadcrumb
                 items={[
                   { label: "Home", href: "/" },
@@ -189,11 +191,13 @@ export default function GT2500FLPPage() {
                   { label: product.model },
                 ]}
               />
-              <ProductGallery
-                images={product.images}
-                videoId={product.videoId}
-                productName={product.name}
-              />
+              <div className="lg:sticky lg:top-[120px]">
+                <ProductGallery
+                  images={product.images}
+                  videoId={product.videoId}
+                  productName={product.name}
+                />
+              </div>
             </div>
 
             {/* ── Right: scrollable product info ─────────────────────── */}
@@ -209,6 +213,7 @@ export default function GT2500FLPPage() {
 
           </div>
         </div>
+        <EnquirySection />
       </main>
       <SiteFooter />
     </>

@@ -1,46 +1,35 @@
 import Image from "next/image";
 
-const mono = { fontFamily: "var(--yg-mono)" } as const;
-
 export function FeaturedBand() {
   return (
-    <section className="yg-sec" style={{ padding: "0 0 104px" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 36px " }}>
-        <div className="yg-feat" data-reveal="" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", border: "1px solid #E4E8EE" }}>
-          <div className="yg-feat-pad" style={{ padding: "54px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div style={{ ...mono, fontSize: 12, letterSpacing: ".12em", textTransform: "uppercase", color: "#0E5FCB", marginBottom: 20 }}>
+    <section className="yg-sec pb-[104px]">
+      <div className="mx-auto max-w-[1440px] px-9">
+        <div className="yg-feat grid grid-cols-2 border border-[#E4E8EE]" data-reveal="">
+          <div className="yg-feat-pad flex flex-col justify-center px-12 py-[54px]">
+            <div className="mb-5 font-yg-mono text-[12px] uppercase tracking-[0.12em] text-yg-blue">
               [ On site ]
             </div>
-            <h3 style={{ fontSize: "clamp(28px,3.4vw,40px)", lineHeight: 1.08, letterSpacing: "-0.025em", fontWeight: 600, margin: "0 0 16px" }}>
+            <h3 className="m-0 mb-4 text-[clamp(28px,3.4vw,40px)] font-semibold leading-[1.08] tracking-[-0.025em]">
               Engineered, commissioned and calibrated — not just shipped
             </h3>
-            <p style={{ fontSize: 17, lineHeight: 1.6, color: "#46505C", margin: "0 0 28px", maxWidth: 440 }}>
+            <p className="m-0 mb-7 max-w-[440px] text-[17px] leading-[1.6] text-[#46505C]">
               Our engineers specify, commission and calibrate on site, and hand over named certificates and
               calibration records for your compliance file.
             </p>
             <a
-              className="yg-cta-line yg-mono"
+              className="yg-cta-line yg-mono self-start bg-yg-ink px-[26px] py-[15px] text-[13px] uppercase tracking-[0.05em] text-white"
               href="#why"
-              style={{
-                alignSelf: "flex-start",
-                background: "#0E1A2B",
-                color: "#fff",
-                fontSize: 13,
-                letterSpacing: ".05em",
-                textTransform: "uppercase",
-                padding: "15px 26px",
-              }}
             >
               <span>How we work &nbsp;→</span>
             </a>
           </div>
-          <div style={{ position: "relative", minHeight: 380, borderLeft: "1px solid #E4E8EE", background: "#F4F6F9" }}>
+          <div className="relative min-h-[380px] border-l border-[#E4E8EE] bg-[#F4F6F9]">
             <Image
-              src="/Pumpjack-B.png"
+              src="/assets/Industries/Manufacturing & process.png"
               alt="Field engineer commissioning monitoring equipment on site"
               fill
               sizes="(max-width: 980px) 100vw, 640px"
-              style={{ objectFit: "cover" }}
+              className="object-cover"
             />
           </div>
         </div>

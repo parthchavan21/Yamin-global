@@ -52,13 +52,11 @@ export const HOME_PRODUCTS: HomeProduct[] = [
 ];
 
 /**
- * Hover-cursor image shown for an industry row. For now every industry reuses
- * the hero image; to give an industry its own image later, just add an
- * `image: "/some-file.png"` field to its entry below — the default only applies
- * when `image` is omitted.
+ * Hover-cursor image shown for an industry row. Each industry has a matching
+ * file in `/public/assets/Industries/<name>.png`; by default the image is
+ * derived from the industry name, so adding a row needs only a matching file.
+ * To override, pass an explicit `image: "/some-file.png"` on the entry below.
  */
-export const INDUSTRY_CURSOR_IMAGE = "/Herosection.png";
-
 type IndustryInput = { name: string; tag: string; image?: string };
 
 const INDUSTRY_DATA: IndustryInput[] = [
@@ -76,29 +74,38 @@ export const HOME_INDUSTRIES = INDUSTRY_DATA.map((d, i) => ({
   name: d.name,
   tag: d.tag,
   no: "0" + (i + 1),
-  image: d.image ?? INDUSTRY_CURSOR_IMAGE,
+  image: d.image ?? encodeURI(`/assets/Industries/${d.name}.png`),
 }));
 
-export const HOME_VALUES = [
+export const HOME_VALUES: {
+  no: string;
+  title: string;
+  body: string;
+  image?: string;
+}[] = [
   {
     no: "01",
     title: "Certified and compliant",
     body: "Every instrument ships with named certificates — ATEX, IECEx, SIL 2 — and calibration records for your audit trail.",
+    image: "/assets/Certified-2.png",
   },
   {
     no: "02",
     title: "Engineered, not just shipped",
     body: "Our engineers specify, commission and calibrate on site, with full documentation for your compliance records.",
+    image: "/assets/Engineered%20not%20just%20shipped.png",
   },
   {
     no: "03",
     title: "Integration-ready",
     body: "Standard outputs — 4–20 mA, Modbus RTU/TCP and OPC UA — drop into your existing SCADA without rework.",
+    image: "/assets/Integration-ready.png",
   },
   {
     no: "04",
     title: "Supported after delivery",
     body: "Service contracts cover preventive maintenance, spares and 24/7 alarm escalation across every product family.",
+    image: "/assets/Supported%20after%20delivery.png",
   },
 ];
 
@@ -137,4 +144,4 @@ export const HOME_CERTS: { src: string; alt: string }[] = [
   ["SGS-BASEEFA.png", "SGS Baseefa"],
   ["QCI.png", "QCI"],
   ["ISI.jpg", "ISI"],
-].map(([file, alt]) => ({ src: `/logos/${file}`, alt }));
+].map(([file, alt]) => ({ src: `/assets/logos/${file}`, alt }));

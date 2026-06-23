@@ -9,14 +9,14 @@ const PRODUCTS = [
     id: "htd-8811-flp",
     model: "HTD-8811-FLP",
     name: "Fixed Temperature Heat Detector",
-    image: "/products/heat-detector/HTD-8811-FLP.webp",
+    image: "/assets/products/heat-detector/HTD-8811-FLP.webp",
     categoryLabel: "Heat Detector",
   },
   {
     id: "htd-8822-flp",
     model: "HTD-8822-FLP",
     name: "Advanced Heat Detector with Visual Display",
-    image: "/products/heat-detector/HTD-8822-FLP.webp",
+    image: "/assets/products/heat-detector/HTD-8822-FLP.webp",
     categoryLabel: "Heat Detector",
   },
 ];
@@ -49,7 +49,7 @@ export function HeatDetectorGrid() {
   return (
     <section
       aria-labelledby="htd-products-heading"
-      className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20"
+      className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20"
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
         <h2 id="htd-products-heading" className="t-h2" style={{ margin: 0 }}>

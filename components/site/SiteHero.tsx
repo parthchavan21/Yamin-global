@@ -2,9 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-const mono = {
-  fontFamily: "var(--yg-mono)",
-} as const;
+const CROSSES = [
+  "left-[var(--yg-gutter)] top-[-20px] -translate-x-1/2 -translate-y-1/2",
+  "right-[var(--yg-gutter)] top-[-20px] translate-x-1/2 -translate-y-1/2",
+  "bottom-[-44px] left-[var(--yg-gutter)] -translate-x-1/2 translate-y-1/2",
+  "bottom-[-44px] right-[var(--yg-gutter)] translate-x-1/2 translate-y-1/2",
+];
 
 export function SiteHero() {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -31,144 +34,66 @@ export function SiteHero() {
   }, []);
 
   return (
-    <header id="top" className="yg-hero" style={{ position: "relative", padding: "142px 0 60px", overflow: "hidden" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 var(--yg-gutter)", position: "relative" }}>
-        {/* blueprint grid frame */}
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
-          <span style={{ position: "absolute", top: -20, bottom: -20, left: 0, width: 1, background: "#ECEEF2" }} />
-          <span style={{ position: "absolute", top: -20, bottom: -20, right: 0, width: 1, background: "#ECEEF2" }} />
-          {[
-            { pos: { top: -20, left: 0 }, t: "translate(-50%,-50%)" },
-            { pos: { top: -20, right: 0 }, t: "translate(50%,-50%)" },
-            { pos: { bottom: -20, left: 0 }, t: "translate(-50%,50%)" },
-            { pos: { bottom: -20, right: 0 }, t: "translate(50%,50%)" },
-          ].map((c, i) => (
-            <span
-              key={i}
-              style={{ position: "absolute", ...c.pos, color: "#0E5FCB", ...mono, fontSize: 13, transform: c.t }}
-            >
+    <header id="top" className="yg-hero relative overflow-hidden px-0 pb-[44px] pt-[56px]">
+      {/* Full-height vertical frame lines — span the whole hero so the top is
+          hidden behind the fixed nav and emerges exactly at the nav border, and
+          the bottom meets the certification strip, on every display size. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+        <div className="relative mx-auto h-full max-w-[1440px]">
+          <span className="absolute inset-y-0 left-[var(--yg-gutter)] w-px bg-[#ECEEF2]" />
+          <span className="absolute inset-y-0 right-[var(--yg-gutter)] w-px bg-[#ECEEF2]" />
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-[1440px] px-[calc(var(--yg-gutter)+40px)] xl:pb-10 xl:pt-[64px]">
+        {/* blueprint corner crosses */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          {CROSSES.map((pos, i) => (
+            <span key={i} className={`absolute font-yg-mono text-[13px] text-yg-blue ${pos}`}>
               +
             </span>
           ))}
         </div>
 
-        <div
-          className="yg-eyebrow-row"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            gap: 16,
-            ...mono,
-            fontSize: 12,
-            letterSpacing: ".08em",
-            textTransform: "uppercase",
-            color: "#8A93A0",
-            position: "relative",
-            zIndex: 1,
-            paddingBottom: 34,
-          }}
-        >
-          <span>Ajman Free Zone — UAE</span>
-        </div>
+        <div className="yg-eyebrow-row relative z-[1] flex items-center justify-end gap-4 pb-[34px] font-yg-mono text-[12px] uppercase tracking-[0.08em] text-[#8A93A0]" />
 
-        <div
-          className="yg-hero-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.08fr .92fr",
-            gap: 54,
-            alignItems: "center",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
+        <div className="yg-hero-grid relative z-[1] grid grid-cols-[1.08fr_.92fr] items-center gap-[54px]">
           <div data-reveal-l="">
-            <div
-              className="yg-mono"
-              style={{
-                fontSize: 12,
-                letterSpacing: ".12em",
-                textTransform: "uppercase",
-                color: "#0E5FCB",
-                marginBottom: 20,
-              }}
-            >
+            <div className="mb-5 font-yg-mono text-[12px] uppercase tracking-[0.12em] text-yg-blue">
               Industrial monitoring &amp; safety
             </div>
-            <h1
-              className="yg-h1"
-              style={{
-                fontSize: 48,
-                lineHeight: 1.0,
-                letterSpacing: "-0.035em",
-                fontWeight: 600,
-                margin: "0 0 26px",
-                width: 500,
-                maxWidth: "100%",
-              }}
-            >
+            <h1 className="yg-h1 mb-[26px] w-[500px] max-w-full text-[48px] font-semibold leading-none tracking-[-0.035em]">
               Your plant runs on precision. We protect it{" "}
-              <span style={{ color: "#0E5FCB" }}>before risk becomes a problem.</span>
+              <span className="text-yg-blue">before risk becomes a problem.</span>
             </h1>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: "#46505C", maxWidth: 520, margin: "0 0 34px" }}>
+            <p className="mb-[34px] max-w-[520px] text-[16px] leading-[1.6] text-[#46505C]">
               Certified gas, flame, process and environmental monitoring — specified, commissioned and
               supported by engineers, so your people and assets stay safe.
             </p>
-            <div className="yg-hero-cta-row" style={{ display: "flex", flexWrap: "wrap", gap: 0 }}>
+            <div className="yg-hero-cta-row flex flex-wrap gap-0">
               <a
-                className="yg-cta-line yg-mono"
+                className="yg-cta-line yg-mono inline-flex items-center gap-2.5 bg-yg-ink px-7 py-[17px] text-[13px] uppercase tracking-[0.05em] text-white"
                 href="#products"
-                style={{
-                  background: "#0E1A2B",
-                  color: "#fff",
-                  fontSize: 13,
-                  letterSpacing: ".05em",
-                  textTransform: "uppercase",
-                  padding: "17px 28px",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 10,
-                }}
               >
                 <span>Browse products &nbsp;→</span>
               </a>
               <a
-                className="yg-ghost yg-mono"
+                className="yg-ghost yg-mono inline-flex items-center border border-l-0 border-[#D7DDE5] px-7 py-[17px] text-[13px] uppercase tracking-[0.05em] text-yg-ink transition-[background,color] duration-[250ms]"
                 href="#enquiry"
-                style={{
-                  border: "1px solid #D7DDE5",
-                  borderLeft: "none",
-                  color: "#0E1A2B",
-                  fontSize: 13,
-                  letterSpacing: ".05em",
-                  textTransform: "uppercase",
-                  padding: "17px 28px",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  transition: "background .25s ease, color .25s ease",
-                }}
               >
                 Talk to an engineer
               </a>
             </div>
           </div>
 
-          <div data-reveal="" style={{ position: "relative" }}>
-            <div
-              style={{
-                position: "relative",
-                background: "linear-gradient(150deg,#0E5FCB,#0A2540)",
-                overflow: "hidden",
-                aspectRatio: "4 / 4.1",
-              }}
-            >
+          <div className="relative" data-reveal="">
+            <div className="relative aspect-[4/3] overflow-hidden bg-[linear-gradient(150deg,#0E5FCB,#0A2540)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 ref={imgRef}
-                src="/Herosection.png"
+                src="/assets/Herosection.png"
                 alt="Industrial monitoring systems"
-                style={{ width: "100%", height: "112%", objectFit: "cover", display: "block", willChange: "transform" }}
+                className="block h-[112%] w-full object-cover will-change-transform"
               />
             </div>
           </div>

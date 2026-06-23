@@ -25,12 +25,10 @@ export function ProductGallery({ images, videoId, productName }: Props) {
     <div className="flex flex-col gap-3">
       {/* ── Main preview ──────────────────────────────────────────── */}
       <div
-        className="relative w-full overflow-hidden"
+        className="relative w-full overflow-hidden aspect-square lg:aspect-auto lg:h-[calc(100vh-340px)] lg:max-h-[560px] lg:min-h-[340px]"
         style={{
-          aspectRatio: "1 / 1",
           background: "var(--surface-secondary)",
           border: "1px solid var(--border-primary)",
-          borderRadius: "var(--radius-lg)",
         }}
       >
         {isVideo && videoId ? (

@@ -17,7 +17,6 @@ const TABS = ["Features", "Applications"] as const;
 type Tab = (typeof TABS)[number];
 
 export function ProductInfoPanel({
-  model,
   name,
   description,
   features,
@@ -29,22 +28,17 @@ export function ProductInfoPanel({
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Model label + title */}
-      <div>
-        <p className="t-label mb-2" style={{ color: "var(--content-brand)" }}>
-          {model}
-        </p>
-        <h1
-          className="t-h1"
-          style={{
-            margin: 0,
-            fontSize: "clamp(22px, 3vw, 32px)",
-            lineHeight: "clamp(30px, 4vw, 40px)",
-          }}
-        >
-          {name}
-        </h1>
-      </div>
+      {/* Title — top-aligned with the breadcrumb in the left column */}
+      <h1
+        className="t-h1"
+        style={{
+          margin: 0,
+          fontSize: "clamp(22px, 3vw, 32px)",
+          lineHeight: "clamp(30px, 4vw, 40px)",
+        }}
+      >
+        {name}
+      </h1>
 
       {/* Hairline divider */}
       <div style={{ height: 1, background: "var(--border-primary)" }} />
@@ -127,7 +121,7 @@ export function ProductInfoPanel({
               {activeTab === tab && (
                 <span
                   className="absolute bottom-0 left-0 right-0"
-                  style={{ height: 2, background: "var(--content-brand)", borderRadius: "2px 2px 0 0" }}
+                  style={{ height: 2, background: "var(--content-brand)" }}
                 />
               )}
             </button>

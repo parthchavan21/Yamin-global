@@ -6,7 +6,7 @@ export function FlameDetectorVideo() {
         background: "var(--surface-secondary)"
       }}
     >
-      <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20">
+      <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left: heading */}

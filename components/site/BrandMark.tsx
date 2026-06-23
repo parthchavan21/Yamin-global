@@ -2,31 +2,13 @@
 export function BrandMark() {
   return (
     <>
-      <span
-        style={{
-          width: 32,
-          height: 32,
-          background: "#0E5FCB",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <span
-          style={{
-            width: 12,
-            height: 12,
-            border: "2.5px solid #fff",
-            borderRadius: "50%",
-            position: "relative",
-            display: "block",
-          }}
-        >
-          <span style={{ position: "absolute", inset: 2, background: "#fff", borderRadius: "50%" }} />
+      <span className="flex h-8 w-8 items-center justify-center bg-yg-blue">
+        <span className="relative block h-3 w-3 rounded-full border-[2.5px] border-white">
+          <span className="absolute inset-[2px] rounded-full bg-white" />
         </span>
       </span>
-      <span style={{ fontWeight: 700, letterSpacing: "-0.02em", fontSize: 18 }}>
-        YAMIN<span style={{ color: "#9AA4B2", fontWeight: 500 }}> GLOBAL</span>
+      <span className="text-[18px] font-bold tracking-[-0.02em]">
+        YAMIN<span className="font-medium text-[#9AA4B2]"> GLOBAL</span>
       </span>
     </>
   );

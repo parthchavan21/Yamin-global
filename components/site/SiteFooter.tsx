@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { BrandMark } from "@/components/site/BrandMark";
 
-const mono = { fontFamily: "var(--yg-mono)" } as const;
+// Homepage-section anchors stay absolute so they work from any page.
+const toHref = (href: string) => (href.startsWith("#") && href.length > 1 ? `/${href}` : href);
 
 const COLS = [
   {
@@ -24,31 +26,19 @@ const COLS = [
   },
 ];
 
-const headingStyle = {
-  ...mono,
-  fontSize: 11,
-  letterSpacing: ".1em",
-  textTransform: "uppercase",
-  color: "#9AA4B2",
-  margin: "0 0 16px",
-  fontWeight: 400,
-} as const;
-
-const colStyle = { display: "flex", flexDirection: "column", gap: 11, fontSize: 15, color: "#46505C" } as const;
+const headingClass = "mb-4 font-yg-mono text-[11px] font-normal uppercase tracking-[0.1em] text-[#9AA4B2]";
+const colClass = "flex flex-col gap-[11px] text-[15px] text-[#46505C]";
 
 export function SiteFooter() {
   return (
-    <footer style={{ background: "#fff", color: "#0E1A2B", padding: "72px 0 32px", borderTop: "1px solid #ECEEF2" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 var(--yg-gutter)" }}>
-        <div
-          className="yg-footer-grid"
-          style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr", gap: 40, paddingBottom: 48, borderBottom: "1px solid #ECEEF2" }}
-        >
+    <footer className="border-t border-[#ECEEF2] bg-white pb-8 pt-[72px] text-yg-ink">
+      <div className="mx-auto max-w-[1440px] px-[var(--yg-gutter)]">
+        <div className="yg-footer-grid grid grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 border-b border-[#ECEEF2] pb-12">
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 11, marginBottom: 16 }}>
+            <div className="mb-4 flex items-center gap-[11px]">
               <BrandMark />
             </div>
-            <p style={{ fontSize: 15, lineHeight: 1.6, color: "#6B7787", margin: 0, maxWidth: 300 }}>
+            <p className="m-0 max-w-[300px] text-[15px] leading-[1.6] text-[#6B7787]">
               Industrial distribution of monitoring, safety and control systems. P O BOX 40369, C1 - 1F - SF0010, Ajman Free
               Zone, Ajman — UAE.
             </p>
@@ -56,48 +46,36 @@ export function SiteFooter() {
 
           {COLS.map((col) => (
             <div key={col.title}>
-              <h4 style={headingStyle}>{col.title}</h4>
-              <div style={colStyle}>
+              <h4 className={headingClass}>{col.title}</h4>
+              <div className={colClass}>
                 {col.links.map((l) => (
-                  <a key={l.label} className="yg-navlink" href={l.href}>
+                  <Link key={l.label} className="yg-navlink" href={toHref(l.href)}>
                     {l.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
           ))}
 
           <div>
-            <h4 style={headingStyle}>Get in touch</h4>
-            <div style={colStyle}>
+            <h4 className={headingClass}>Get in touch</h4>
+            <div className={colClass}>
               <a className="yg-navlink" href={`mailto:${SITE.email}`}>
                 {SITE.email}
               </a>
               <a className="yg-navlink" href={SITE.phoneHref}>
                 {SITE.phone}
               </a>
-              <a href="#enquiry" style={{ color: "#0E5FCB", fontWeight: 500 }}>
+              <Link href="/#enquiry" className="font-medium text-yg-blue">
                 Request a quote →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 14,
-            paddingTop: 24,
-            ...mono,
-            fontSize: 12,
-            color: "#9AA4B2",
-          }}
-        >
+        <div className="flex flex-wrap items-center justify-between gap-[14px] pt-6 font-yg-mono text-[12px] text-[#9AA4B2]">
           <span>© 2026 {SITE.legalName} — All rights reserved.</span>
-          <div style={{ display: "flex", gap: 24 }}>
+          <div className="flex gap-6">
             <a href="#">Privacy policy</a>
             <a href="#">Terms</a>
             <a href="#">Quality policy</a>

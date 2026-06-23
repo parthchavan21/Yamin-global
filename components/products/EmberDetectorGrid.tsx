@@ -9,7 +9,7 @@ const PRODUCTS = [
     id: "emb-7700-flp",
     model: "EMB-7700-FLP",
     name: "Ember (Radiant Energy) Detector",
-    image: "/products/ember-detector/EMB-7700-FLP.webp",
+    image: "/assets/products/ember-detector/EMB-7700-FLP.webp",
     categoryLabel: "Ember Detector",
   },
 ];
@@ -42,7 +42,7 @@ export function EmberDetectorGrid() {
   return (
     <section
       aria-labelledby="emb-products-heading"
-      className="max-w-[var(--container-max)] mx-auto px-5 md:px-8 py-12 md:py-20"
+      className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-12 md:py-20"
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
         <h2 id="emb-products-heading" className="t-h2" style={{ margin: 0 }}>
