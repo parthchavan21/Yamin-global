@@ -50,7 +50,7 @@ export default function EmberDetectorPage() {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] items-center">
 
               {/* Left: copy */}
-              <div className="py-20 md:py-28 lg:py-32 flex flex-col">
+              <div className="pt-28 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 flex flex-col">
                 <span className="t-label block mb-4" style={{ color: "var(--content-brand)" }}>
                   Ember Detectors
                 </span>

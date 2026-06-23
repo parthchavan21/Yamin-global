@@ -29,6 +29,8 @@ export function SiteHeader() {
   const navRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  // Mobile/tablet panel: Products is a collapsible chevron section.
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   // Close the dropdown if the viewport grows back to the desktop layout.
   useEffect(() => {
@@ -129,46 +131,64 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {/* Mobile / tablet dropdown panel */}
+      {/* Mobile / tablet dropdown panel — full-height, scrollable links, pinned CTA */}
       <div className={`yg-mobile-panel border-t border-[#ECEEF2] bg-white${open ? " is-open" : ""}`}>
-        <div className="flex flex-col px-[var(--yg-gutter)] pb-[22px] pt-2">
-          {NAV.map((l) => (
-            <div key={l.label}>
+        <div className="yg-mobile-scroll flex-1 overflow-y-auto px-[var(--yg-gutter)] pb-[22px] pt-2">
+          {NAV.map((l) =>
+            l.groups ? (
+              <div key={l.label}>
+                <button
+                  type="button"
+                  className="yg-mobile-link yg-mono flex w-full items-center justify-between border-b border-[#F0F2F5] py-4 text-[14px] uppercase tracking-[0.04em] text-[#46505C]"
+                  aria-expanded={mobileProductsOpen}
+                  onClick={() => setMobileProductsOpen((v) => !v)}
+                >
+                  {l.label}
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-200 ${mobileProductsOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {mobileProductsOpen && (
+                  <div className="pl-[14px] pb-1">
+                    {l.groups.map((g) => (
+                      <div key={g.heading} className="pt-[14px]">
+                        <div className="mb-1 font-yg-mono text-[11px] uppercase tracking-[0.1em] text-[#8A93A0]">
+                          {g.heading}
+                        </div>
+                        {g.items.map((c, ci) => (
+                          <Link
+                            key={c.label}
+                            className="yg-mobile-link flex items-start gap-2.5 border-b border-[#F4F6F8] py-[11px] text-[14px] leading-[20px] text-[#2A3645]"
+                            href={c.href}
+                            onClick={() => setOpen(false)}
+                          >
+                            <span className="shrink-0 font-yg-mono text-[12px] font-bold leading-[20px] text-yg-blue">
+                              {String(ci + 1).padStart(2, "0")}
+                            </span>
+                            {c.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
               <Link
+                key={l.label}
                 className="yg-mobile-link yg-mono block border-b border-[#F0F2F5] py-4 text-[14px] uppercase tracking-[0.04em] text-[#46505C]"
                 href={l.href}
                 onClick={() => setOpen(false)}
               >
                 {l.label}
               </Link>
-              {l.groups && (
-                <div className="pl-[14px]">
-                  {l.groups.map((g) => (
-                    <div key={g.heading} className="pt-[14px]">
-                      <div className="mb-1 font-yg-mono text-[11px] uppercase tracking-[0.1em] text-[#8A93A0]">
-                        {g.heading}
-                      </div>
-                      {g.items.map((c, ci) => (
-                        <Link
-                          key={c.label}
-                          className="yg-mobile-link flex items-start gap-2.5 border-b border-[#F4F6F8] py-[11px] text-[14px] leading-[20px] text-[#2A3645]"
-                          href={c.href}
-                          onClick={() => setOpen(false)}
-                        >
-                          <span className="shrink-0 font-yg-mono text-[12px] font-bold leading-[20px] text-yg-blue">
-                            {String(ci + 1).padStart(2, "0")}
-                          </span>
-                          {c.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+            )
+          )}
+        </div>
+        <div className="shrink-0 border-t border-[#ECEEF2] bg-white px-[var(--yg-gutter)] py-[14px]">
           <Link
-            className="yg-cta yg-mono mt-[18px] bg-yg-blue px-[18px] py-[14px] text-center text-[12.5px] uppercase tracking-[0.04em] text-white transition-colors"
+            className="yg-cta yg-mono block bg-yg-blue px-[18px] py-[14px] text-center text-[12.5px] uppercase tracking-[0.04em] text-white transition-colors"
             href="/#enquiry"
             onClick={() => setOpen(false)}
           >

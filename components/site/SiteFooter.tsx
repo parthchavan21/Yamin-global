@@ -6,12 +6,12 @@ import { BrandMark } from "@/components/site/BrandMark";
 // Homepage-section anchors stay absolute so they work from any page.
 const toHref = (href: string) => (href.startsWith("#") && href.length > 1 ? `/${href}` : href);
 
-const COLS = [
+const COLS: { title: string; links: { label: string; href?: string }[] }[] = [
   {
     title: "Gas Detectors",
     links: [
       { label: "Fixed Gas Detector", href: "/products/fixed-gas-detector" },
-      { label: "GT-2500-FLP", href: "/products/fixed-gas-detector/gt-2500-flp" },
+      { label: "LPG/PNG/CNG Gas Detector" },
     ],
   },
   {
@@ -52,11 +52,15 @@ export function SiteFooter() {
             <div key={col.title}>
               <h4 className={headingClass}>{col.title}</h4>
               <div className={colClass}>
-                {col.links.map((l) => (
-                  <Link key={l.label} className="yg-navlink" href={toHref(l.href)}>
-                    {l.label}
-                  </Link>
-                ))}
+                {col.links.map((l) =>
+                  l.href ? (
+                    <Link key={l.label} className="yg-navlink" href={toHref(l.href)}>
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <span key={l.label}>{l.label}</span>
+                  )
+                )}
               </div>
             </div>
           ))}

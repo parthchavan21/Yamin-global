@@ -25,7 +25,7 @@ export default function HeatDetectorPage() {
           aria-labelledby="htd-hero-heading"
           style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 py-20 md:py-28 lg:py-32">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 pt-28 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] items-center">
 
               {/* Left: copy */}

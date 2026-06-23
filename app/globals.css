@@ -512,7 +512,19 @@ body {
   .yg-nav-links { display: none !important; }
   .yg-nav-cta { display: none !important; }
   .yg-burger { display: inline-flex !important; }
-  .yg-mobile-panel.is-open { display: block; }
+  /* Open panel fills the viewport height below the ~62px bar: links scroll,
+     the CTA stays attached to the bottom and in view. */
+  .yg-mobile-panel.is-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 62px;
+    height: calc(100vh - 62px);
+    height: calc(100dvh - 62px);
+    overscroll-behavior: contain;
+  }
   .yg-sec { padding: 64px 0 !important; }
   .yg-row-name { font-size: 26px !important; }
   .yg-form-grid { grid-template-columns: 1fr !important; }
