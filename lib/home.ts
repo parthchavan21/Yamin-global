@@ -140,7 +140,6 @@ export const HOME_CERTS: { src: string; alt: string }[] = [
   ["RoHS-logo.jpg", "RoHS"],
   ["BIS.png", "BIS"],
   ["PESO.jpg", "PESO"],
-  ["Make-in-India.jpg", "Make in India"],
   ["SGS-BASEEFA.png", "SGS Baseefa"],
   ["QCI.png", "QCI"],
   ["ISI.jpg", "ISI"],

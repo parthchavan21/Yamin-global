@@ -87,11 +87,11 @@ export function SiteHeader() {
                         {g.items.map((c, ci) => (
                           <Link
                             key={c.label}
-                            className="yg-drop-link flex items-center gap-2.5 px-2 py-[9px] text-[13.5px] normal-case tracking-normal text-[#2A3645] transition-[background,color] duration-150"
+                            className="yg-drop-link flex items-start gap-2.5 px-2 py-[9px] text-[13.5px] leading-[20px] normal-case tracking-normal text-[#2A3645] transition-[background,color] duration-150"
                             href={c.href}
                             onClick={() => setProductsOpen(false)}
                           >
-                            <span className="shrink-0 font-yg-mono text-[12px] font-bold text-yg-blue">
+                            <span className="shrink-0 font-yg-mono text-[12px] font-bold leading-[20px] text-yg-blue">
                               {String(ci + 1).padStart(2, "0")}
                             </span>
                             {c.label}
@@ -151,11 +151,11 @@ export function SiteHeader() {
                       {g.items.map((c, ci) => (
                         <Link
                           key={c.label}
-                          className="yg-mobile-link flex items-center gap-2.5 border-b border-[#F4F6F8] py-[11px] text-[14px] text-[#2A3645]"
+                          className="yg-mobile-link flex items-start gap-2.5 border-b border-[#F4F6F8] py-[11px] text-[14px] leading-[20px] text-[#2A3645]"
                           href={c.href}
                           onClick={() => setOpen(false)}
                         >
-                          <span className="shrink-0 font-yg-mono text-[12px] font-bold text-yg-blue">
+                          <span className="shrink-0 font-yg-mono text-[12px] font-bold leading-[20px] text-yg-blue">
                             {String(ci + 1).padStart(2, "0")}
                           </span>
                           {c.label}

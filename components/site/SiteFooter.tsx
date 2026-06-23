@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { BrandMark } from "@/components/site/BrandMark";
 
@@ -7,21 +8,18 @@ const toHref = (href: string) => (href.startsWith("#") && href.length > 1 ? `/${
 
 const COLS = [
   {
-    title: "Products",
+    title: "Gas Detectors",
     links: [
-      { label: "Gas detection", href: "#products" },
-      { label: "Flame detection", href: "#products" },
-      { label: "Process control", href: "#products" },
-      { label: "Cold chain", href: "#products" },
+      { label: "Fixed Gas Detector", href: "/products/fixed-gas-detector" },
+      { label: "GT-2500-FLP", href: "/products/fixed-gas-detector/gt-2500-flp" },
     ],
   },
   {
-    title: "Company",
+    title: "Flame Detectors",
     links: [
-      { label: "About", href: "#why" },
-      { label: "Industries", href: "#industries" },
-      { label: "Certifications", href: "#" },
-      { label: "Careers", href: "#" },
+      { label: "Flame Detector", href: "/products/flame-detector" },
+      { label: "Heat Detector", href: "/products/heat-detector" },
+      { label: "Ember Detector", href: "/products/ember-detector" },
     ],
   },
 ];
@@ -39,9 +37,15 @@ export function SiteFooter() {
               <BrandMark />
             </div>
             <p className="m-0 max-w-[300px] text-[15px] leading-[1.6] text-[#6B7787]">
-              Industrial distribution of monitoring, safety and control systems. P O BOX 40369, C1 - 1F - SF0010, Ajman Free
-              Zone, Ajman — UAE.
+              Industrial distribution of monitoring, safety and control systems.
             </p>
+            <div className="mt-4 flex max-w-[290px] items-center  gap-3 border border-[#ECEEF2] bg-[#F8FAFC] px-[14px] py-3">
+              <div className="p-2  bg-[var(--surface-brand)]" ><MapPin size={18} className="mt-[2px] shrink-0 text-white" strokeWidth={2} /> 
+              </div>
+              <address className="m-0 text-[14px] not-italic leading-[1.6] text-[#6B7787]">
+                P O BOX 40369, C1 - 1F - SF0010, Ajman Free Zone, Ajman — UAE.
+              </address>
+            </div>
           </div>
 
           {COLS.map((col) => (

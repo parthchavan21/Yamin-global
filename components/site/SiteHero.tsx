@@ -1,36 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
-const CROSSES = [
-  "left-[var(--yg-gutter)] top-[-20px] -translate-x-1/2 -translate-y-1/2",
-  "right-[var(--yg-gutter)] top-[-20px] translate-x-1/2 -translate-y-1/2",
-  "bottom-[-44px] left-[var(--yg-gutter)] -translate-x-1/2 translate-y-1/2",
-  "bottom-[-44px] right-[var(--yg-gutter)] translate-x-1/2 translate-y-1/2",
+// Auto-playing hero slideshow — these cycle on a loop with a crossfade.
+const HERO_SLIDES = [
+  "/assets/Hero img corousel/Yamin Product Images - GT-2500-FLP.png",
+  "/assets/Hero img corousel/Yamin Product Images - GT-2500-WP.png",
+  "/assets/Hero img corousel/Yamin Product Images - GT-2511-FLP.png",
 ];
 
 export function SiteHero() {
-  const imgRef = useRef<HTMLImageElement>(null);
-  const ppmRef = useRef<HTMLSpanElement>(null);
+  const [slide, setSlide] = useState(0);
 
   useEffect(() => {
-    const img = imgRef.current;
-    const onScroll = () => {
-      const y = window.scrollY || 0;
-      if (img) img.style.transform = `translateY(${-Math.min(y * 0.1, 60)}px)`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    // Live "telemetry" readout — wanders within the normal band.
-    const ppmTimer = setInterval(() => {
-      if (ppmRef.current) ppmRef.current.textContent = (8 + Math.random() * 9).toFixed(0);
-    }, 1400);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      clearInterval(ppmTimer);
-    };
+    // Advance every 4s; loops back to the first slide automatically.
+    const timer = setInterval(() => {
+      setSlide((s) => (s + 1) % HERO_SLIDES.length);
+    }, 4000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -45,19 +32,10 @@ export function SiteHero() {
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-[calc(var(--yg-gutter)+40px)] xl:pb-10 xl:pt-[64px]">
-        {/* blueprint corner crosses */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          {CROSSES.map((pos, i) => (
-            <span key={i} className={`absolute font-yg-mono text-[13px] text-yg-blue ${pos}`}>
-              +
-            </span>
-          ))}
-        </div>
-
+      <div className="relative mx-auto max-w-[1440px] px-8 md:px-[calc(var(--yg-gutter)+40px)] xl:pb-10 xl:pt-[64px]">
         <div className="yg-eyebrow-row relative z-[1] flex items-center justify-end gap-4 pb-[34px] font-yg-mono text-[12px] uppercase tracking-[0.08em] text-[#8A93A0]" />
 
-        <div className="yg-hero-grid relative z-[1] grid grid-cols-[1.08fr_.92fr] items-center gap-[54px]">
+        <div className="yg-hero-grid relative z-[1] grid grid-cols-[1.08fr_.92fr] items-stretch gap-[54px]">
           <div data-reveal-l="">
             <div className="mb-5 font-yg-mono text-[12px] uppercase tracking-[0.12em] text-yg-blue">
               Industrial monitoring &amp; safety
@@ -86,15 +64,22 @@ export function SiteHero() {
             </div>
           </div>
 
-          <div className="relative" data-reveal="">
-            <div className="relative aspect-[4/3] overflow-hidden bg-[linear-gradient(150deg,#0E5FCB,#0A2540)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                ref={imgRef}
-                src="/assets/Herosection.png"
-                alt="Industrial monitoring systems"
-                className="block h-[112%] w-full object-cover will-change-transform"
-              />
+          <div className="relative h-full" data-reveal="">
+            <div
+              className="relative h-full min-h-[360px] overflow-hidden bg-[linear-gradient(150deg,#0E5FCB,#0A2540)]"
+              aria-hidden
+            >
+              {HERO_SLIDES.map((src, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={src}
+                  src={src}
+                  alt=""
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out ${
+                    i === slide ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
