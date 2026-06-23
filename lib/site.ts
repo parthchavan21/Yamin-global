@@ -13,7 +13,7 @@ export const SITE = {
   description:
     "Yamin Global supplies certified gas detection, process control and environmental monitoring systems for industrial, commercial and cold-chain operations.",
   url: SITE_URL,
-  email: "sales@yaminglobal.com",
+  email: "demo@emailid",
   phone: "+971 55 428 0562",
   phoneHref: "tel:+971554280562",
   address: {
