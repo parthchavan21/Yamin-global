@@ -46,9 +46,9 @@ export function SiteHeader() {
       ref={navRef}
       className="fixed inset-x-0 top-0 z-[60] border-b border-[#ECEEF2] bg-white/90 backdrop-blur-[8px] backdrop-saturate-150 transition-all duration-300"
     >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-[var(--yg-gutter)] py-[15px]">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-[var(--yg-gutter)] py-2">
         <Link href="/" className="flex items-center gap-[11px]">
-          <BrandMark />
+          <BrandMark className="h-10 w-auto min-[981px]:h-[60px]" />
         </Link>
 
         <div className="yg-nav-links yg-mono flex items-center gap-9 text-[12.5px] uppercase tracking-[0.04em] text-[#46505C]">
