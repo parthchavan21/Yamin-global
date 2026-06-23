@@ -34,7 +34,7 @@ export function SiteFooter() {
         <div className="yg-footer-grid grid grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 border-b border-[#ECEEF2] pb-12">
           <div>
             <div className="mb-4 flex items-center gap-[11px]">
-              <BrandMark />
+              <BrandMark className="h-16 w-auto" />
             </div>
             <p className="m-0 max-w-[300px] text-[15px] leading-[1.6] text-[#6B7787]">
               Industrial distribution of monitoring, safety and control systems.

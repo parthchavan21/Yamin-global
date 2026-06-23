@@ -520,9 +520,9 @@ body {
     position: fixed;
     left: 0;
     right: 0;
-    top: 62px;
-    height: calc(100vh - 62px);
-    height: calc(100dvh - 62px);
+    top: 57px;
+    height: calc(100vh - 57px);
+    height: calc(100dvh - 57px);
     overscroll-behavior: contain;
   }
   .yg-sec { padding: 64px 0 !important; }
@@ -569,4 +569,7 @@ body {
   .yg-cta-line, .yg-ghost { width: 100% !important; justify-content: center !important; text-align: center !important; }
   .yg-cta-line { align-self: stretch !important; }
   .yg-ghost { border-left: 1px solid #D7DDE5 !important; }
+  /* "Why" images: show the whole image (no fixed-ratio crop) on mobile */
+  .yg-why-imgcell { aspect-ratio: auto !important; padding: 0 !important; overflow: visible !important; }
+  .yg-why-imgcell img { height: auto !important; width: 100% !important; object-fit: contain !important; }
 }
