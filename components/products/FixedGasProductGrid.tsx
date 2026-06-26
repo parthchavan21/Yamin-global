@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Search } from "lucide-react";
 
@@ -88,23 +88,6 @@ const PRODUCTS = [
 
 export function FixedGasProductGrid() {
   const [query, setQuery] = useState("");
-  const chipRef = useRef<HTMLSpanElement>(null);
-
-  function showChip(e: React.MouseEvent) {
-    if (!chipRef.current) return;
-    chipRef.current.style.opacity = "1";
-    chipRef.current.style.transform = `translate(${e.clientX + 16}px, ${e.clientY + 16}px)`;
-  }
-
-  function moveChip(e: React.MouseEvent) {
-    if (!chipRef.current) return;
-    chipRef.current.style.transform = `translate(${e.clientX + 16}px, ${e.clientY + 16}px)`;
-  }
-
-  function hideChip() {
-    if (!chipRef.current) return;
-    chipRef.current.style.opacity = "0";
-  }
 
   const filtered = PRODUCTS.filter(
     (p) =>
@@ -166,10 +149,7 @@ export function FixedGasProductGrid() {
             <Tag
               key={product.id}
               {...(linkProps as Record<string, string>)}
-              onMouseEnter={showChip}
-              onMouseMove={moveChip}
-              onMouseLeave={hideChip}
-              className="flex flex-col cursor-pointer no-underline"
+              className="flex flex-col no-underline"
               style={{
                 background: "var(--surface-primary)",
                 border: "1px solid var(--border-primary)",
@@ -195,7 +175,7 @@ export function FixedGasProductGrid() {
               </div>
 
               {/* Text area */}
-              <div className="flex flex-col p-5 pt-4">
+              <div className="flex flex-1 flex-col p-5 pt-4">
                 <p
                   className="t-mono font-semibold mb-1"
                   style={{ fontSize: 15, color: "var(--content-primary)" }}
@@ -212,6 +192,14 @@ export function FixedGasProductGrid() {
                 >
                   {product.name}
                 </p>
+                <div className="mt-auto pt-4">
+                  <span
+                    className="ym-btn ym-btn--secondary ym-btn--sm w-full"
+                    style={{ height: "38px" }}
+                  >
+                    View product
+                  </span>
+                </div>
               </div>
             </Tag>
             );
@@ -222,25 +210,6 @@ export function FixedGasProductGrid() {
           <p className="t-body-lg">No products match &ldquo;{query}&rdquo;</p>
         </div>
       )}
-
-      {/* Cursor-follow chip */}
-      <span
-        ref={chipRef}
-        className="ym-chip ym-chip--brand"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          pointerEvents: "none",
-          zIndex: 9999,
-          opacity: 0,
-          transform: "translate(0px, 0px)",
-          transition: "opacity .15s ease",
-          willChange: "transform",
-        }}
-      >
-        View product
-      </span>
     </section>
   );
 }

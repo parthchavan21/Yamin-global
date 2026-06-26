@@ -48,7 +48,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-[var(--yg-gutter)] py-2">
         <Link href="/" className="flex items-center gap-[11px]">
-          <BrandMark className="h-10 w-auto min-[981px]:h-[60px]" />
+          <BrandMark className="h-8 w-auto min-[981px]:h-12" />
         </Link>
 
         <div className="yg-nav-links yg-mono flex items-center gap-9 text-[12.5px] uppercase tracking-[0.04em] text-[#46505C]">

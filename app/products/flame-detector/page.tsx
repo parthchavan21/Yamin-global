@@ -44,11 +44,11 @@ export default function FlameDetectorPage() {
           aria-labelledby="fld-hero-heading"
           style={{ background: "var(--surface-primary)", borderBottom: "1px solid var(--border-primary)" }}
         >
-          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9 pt-24 pb-12 md:pt-28 md:pb-14 lg:pt-32 lg:pb-16">
+          <div className="max-w-[var(--container-max)] mx-auto px-5 md:px-9">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] items-center">
 
               {/* Left: copy */}
-              <div className="flex flex-col">
+              <div className="pt-24 pb-12 md:pt-28 md:pb-14 lg:pt-32 lg:pb-16 flex flex-col">
                 <span className="t-label block mb-4" style={{ color: "var(--content-brand)" }}>
                   Flame Detectors
                 </span>
@@ -76,7 +76,7 @@ export default function FlameDetectorPage() {
               {/* Right: image */}
               <div className="w-full flex items-center justify-center lg:justify-end">
                 <Image
-                  src="/assets/Pumpjack-B2.png"
+                  src="/assets/products/flame-detector/cover.svg"
                   alt="Industrial environment for flame detection"
                   width={560}
                   height={480}

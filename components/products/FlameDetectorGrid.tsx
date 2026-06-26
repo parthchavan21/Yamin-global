@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Search } from "lucide-react";
 
@@ -66,7 +66,6 @@ const TABS: { label: string; value: Category }[] = [
 export function FlameDetectorGrid() {
   const [active, setActive] = useState<Category>("all");
   const [query, setQuery] = useState("");
-  const chipRef = useRef<HTMLSpanElement>(null);
 
   const filtered = PRODUCTS.filter((p) => {
     const matchesCategory = active === "all" || p.category === active;
@@ -76,20 +75,6 @@ export function FlameDetectorGrid() {
       p.name.toLowerCase().includes(query.toLowerCase());
     return matchesCategory && matchesQuery;
   });
-
-  function showChip(e: React.MouseEvent) {
-    if (!chipRef.current) return;
-    chipRef.current.style.opacity = "1";
-    chipRef.current.style.transform = `translate(${e.clientX + 16}px, ${e.clientY + 16}px)`;
-  }
-  function moveChip(e: React.MouseEvent) {
-    if (!chipRef.current) return;
-    chipRef.current.style.transform = `translate(${e.clientX + 16}px, ${e.clientY + 16}px)`;
-  }
-  function hideChip() {
-    if (!chipRef.current) return;
-    chipRef.current.style.opacity = "0";
-  }
 
   return (
     <section
@@ -158,10 +143,7 @@ export function FlameDetectorGrid() {
           {filtered.map((product) => (
             <article
               key={product.id}
-              onMouseEnter={showChip}
-              onMouseMove={moveChip}
-              onMouseLeave={hideChip}
-              className="flex flex-col cursor-pointer"
+              className="flex flex-col"
               style={{
                 background: "var(--surface-primary)",
                 border: "1px solid var(--border-primary)",
@@ -181,7 +163,7 @@ export function FlameDetectorGrid() {
                   className="object-contain p-6"
                 />
               </div>
-              <div className="flex flex-col p-5 pt-4 gap-1">
+              <div className="flex flex-1 flex-col p-5 pt-4 gap-1">
                 <span className="t-label" style={{ color: "var(--content-brand)" }}>
                   {product.categoryLabel}
                 </span>
@@ -191,6 +173,14 @@ export function FlameDetectorGrid() {
                 <p style={{ margin: 0, fontSize: 13, lineHeight: "20px", color: "var(--content-secondary)" }}>
                   {product.name}
                 </p>
+                <div className="mt-auto pt-4">
+                  <span
+                    className="ym-btn ym-btn--secondary ym-btn--sm w-full"
+                    style={{ height: "38px" }}
+                  >
+                    View product
+                  </span>
+                </div>
               </div>
             </article>
           ))}
@@ -200,25 +190,6 @@ export function FlameDetectorGrid() {
           <p className="t-body-lg">No products match your search.</p>
         </div>
       )}
-
-      {/* Cursor-follow chip */}
-      <span
-        ref={chipRef}
-        className="ym-chip ym-chip--brand"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          pointerEvents: "none",
-          zIndex: 9999,
-          opacity: 0,
-          transform: "translate(0px,0px)",
-          transition: "opacity .15s ease",
-          willChange: "transform",
-        }}
-      >
-        View product
-      </span>
     </section>
   );
 }

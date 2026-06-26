@@ -182,16 +182,21 @@ export default function GT2500FLPPage() {
               breadcrumb scrolls in step with the heading (kept top-aligned). */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16">
 
-            {/* ── Left: breadcrumb (scrolls) + sticky image gallery ──── */}
+            {/* ── Left: sticky breadcrumb + sticky image gallery ──────── */}
             <div className="flex flex-col gap-6">
-              <Breadcrumb
-                items={[
-                  { label: "Home", href: "/" },
-                  { label: product.category, href: product.categoryHref },
-                  { label: product.model },
-                ]}
-              />
-              <div className="lg:sticky lg:top-[120px]">
+              <div
+                className="lg:sticky lg:top-[104px] z-20 py-2"
+                style={{ background: "var(--surface-primary)" }}
+              >
+                <Breadcrumb
+                  items={[
+                    { label: "Home", href: "/" },
+                    { label: product.category, href: product.categoryHref },
+                    { label: product.model },
+                  ]}
+                />
+              </div>
+              <div className="lg:sticky lg:top-[150px]">
                 <ProductGallery
                   images={product.images}
                   videoId={product.videoId}

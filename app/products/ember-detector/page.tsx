@@ -77,7 +77,7 @@ export default function EmberDetectorPage() {
               {/* Right: image */}
               <div className="w-full flex items-center justify-center lg:justify-end">
                 <Image
-                  src="/assets/products/ember-detector/EMB-7700-FLP.webp"
+                  src="/assets/products/ember-detector/cover.svg"
                   alt="Yamin Global EMB-7700-FLP ember detector"
                   width={560}
                   height={480}
