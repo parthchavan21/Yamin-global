@@ -104,16 +104,13 @@ export const HOME_VALUES: {
   {
     no: "04",
     title: "Supported after delivery",
-    body: "Service contracts cover preventive maintenance, spares and 24/7 alarm escalation across every product family.",
+    body: "We provide technical support after delivery",
     image: "/assets/Supported%20after%20delivery.png",
   },
 ];
 
 export const HOME_FAQS = [
-  {
-    q: "Which certifications do your gas detectors carry?",
-    a: "Fixed detectors are ATEX and IECEx certified; SIL 2-rated variants are available for safety-instrumented systems. Named certificates ship with every unit.",
-  },
+  
   {
     q: "Do you commission and calibrate on site?",
     a: "Yes. Our engineers specify, commission and calibrate on site, then hand over full documentation and calibration records for your compliance file.",
@@ -124,7 +121,7 @@ export const HOME_FAQS = [
   },
   {
     q: "What support do you provide after delivery?",
-    a: "Service contracts cover preventive maintenance, spares and 24/7 alarm escalation across every product family.",
+    a: "We provide technical support after delivery.",
   },
 ].map((f, i) => ({ ...f, no: "0" + (i + 1) }));
 

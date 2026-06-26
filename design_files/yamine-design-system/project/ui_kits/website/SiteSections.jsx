@@ -63,7 +63,7 @@ function Faq() {
           { id: "a", title: "Which certifications do your gas detectors carry?", content: "Fixed detectors are ATEX and IECEx certified; SIL2-rated variants are available for safety-instrumented systems. Certificates ship with every unit." },
           { id: "b", title: "Do you commission and calibrate on site?", content: "Yes. Our engineers handle installation, commissioning, and scheduled calibration with full documentation for your compliance records." },
           { id: "c", title: "Can your systems integrate with our existing SCADA?", content: "All instruments expose standard outputs — 4–20 mA, Modbus RTU/TCP, and OPC UA via our data acquisition software." },
-          { id: "d", title: "What support do you provide after delivery?", content: "Service contracts cover preventive maintenance, spares and 24/7 alarm escalation support." },
+          { id: "d", title: "What support do you provide after delivery?", content: "We provide technical support after delivery"}
         ]} />
       </div>
     </section>

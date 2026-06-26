@@ -2229,7 +2229,7 @@ function Faq() {
     }, {
       id: "d",
       title: "What support do you provide after delivery?",
-      content: "Service contracts cover preventive maintenance, spares and 24/7 alarm escalation support."
+      content: "We provide technical support after delivery"
     }]
   })));
 }
